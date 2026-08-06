@@ -4,7 +4,7 @@
 
 ## Unreleased (v0.3.2 in progress)
 
-Six new TS compressors added (each with fixtures + tests, all green):
+Eight new TS compressors added (each with fixtures + tests, all green):
 
 | Compressor | Category | What it does | Tests |
 | --- | --- | --- | ---: |
@@ -14,9 +14,11 @@ Six new TS compressors added (each with fixtures + tests, all green):
 | `docker` | infra | `docker ps -a` / `docker build` / `docker compose up` — ps: keeps header + summary + anomalous rows (Exited/Restarting/unhealthy), drops healthy `Up` rows; build: keeps `Successfully built`/`tagged` + errors, drops `Step N/N` + hash noise; compose: keeps service state changes + errors + exit codes, drops pull noise + log spam | 13 |
 | `make` | build-tool | `make` / `make build` / `make install` — keeps compiler/linker diagnostics (`file.c:LINE:COL: error:`) + source-snippet context + `make: ***` errors + linker errors; drops command echoes (`cc -c ...`) | 11 |
 | `tsc` | build-tool | `tsc` / `npx tsc` / `tsc -b` — keeps every distinct diagnostic (`file.ts(L,C): error TSxxxx:`), drops exact-duplicate adjacent lines (incremental-build echo), groups by file, keeps `Found N errors in M files.` summary; drops watch-mode + version noise | 11 |
+| `gradle` | build-tool | `gradle build` / `./gradlew test` — keeps failed task lines (`> Task :...: FAILED`) + javac diagnostics (`file.java:LINE: error:`) + test failures + stack traces + `* What went wrong:` block + `BUILD FAILED` summary; drops successful `> Task :...` lines, download noise, config/deprecation chatter | 14 |
+| `mvn` | build-tool | `mvn install` / `mvn test` / `mvn clean install` — keeps `[ERROR]` lines + javac diagnostics (`file.java:[LINE,COL]`) + test results (`Tests run: X, Failures: Y...`) + failure details + `BUILD FAILURE`/`SUCCESS` + Reactor Summary + `Caused by:` chains; drops `[INFO]` chatter, download progress, plugin-execution banners, build-order list | 14 |
 
-Test count: **115 → 182** (67 new tests, 0 regressions). Typecheck clean.
-All six follow the CONTRIBUTING.md 5-step recipe (file → interface → registry → fixtures → tests).
+Test count: **115 → 210** (95 new tests, 0 regressions). Typecheck clean.
+All eight follow the CONTRIBUTING.md 5-step recipe (file → interface → registry → fixtures → tests).
 
 Commits:
 - `bd5b38f` feat: add npm compressor
@@ -25,6 +27,8 @@ Commits:
 - `fc6c68f` feat: add docker compressor
 - `7ac2c70` feat: add make compressor
 - `58d8b71` feat: add tsc compressor
+- `f10282b` feat: add gradle compressor
+- `2133870` feat: add mvn compressor
 
 ## Latest release — v0.3.1 SHIPPED
 
