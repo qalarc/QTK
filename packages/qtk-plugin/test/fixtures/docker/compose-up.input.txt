@@ -1,0 +1,50 @@
+Creating network "myapp_default" with the default driver
+Creating network "myapp_internal" with driver "bridge"
+Creating volume "myapp_db-data" with default driver
+Pulling db (postgres:15)...
+postgres:15: Pulling from library/postgres
+a1b2c3d4e5f6: Pull complete
+b2c3d4e5f6a1: Pull complete
+c3d4e5f6a1b2: Pull complete
+d4e5f6a1b2c3: Pull complete
+e5f6a1b2c3d4: Pull complete
+f6a1b2c3d4e5: Pull complete
+a1b2c3d4e5f7: Pull complete
+Digest: sha256:a1b2c3d4e5f6a1b2c3d4e5f6a1b2c3d4e5f6a1b2c3d4e5f6a1b2c3d4e5f6a1b2
+Status: Downloaded newer image for postgres:15
+Pulling cache (redis:7-alpine)...
+redis:7-alpine: Pulling from library/redis
+b2c3d4e5f6a2: Pull complete
+c3d4e5f6a1b3: Pull complete
+Digest: sha256:b2c3d4e5f6a1b2c3d4e5f6a1b2c3d4e5f6a1b2c3d4e5f6a1b2c3d4e5f6a1b2c3
+Status: Downloaded newer image for redis:7-alpine
+Pulling web (nginx:latest)...
+nginx:latest: Pulling from library/nginx
+c3d4e5f6a1b4: Pull complete
+d4e5f6a1b2c5: Pull complete
+Digest: sha256:c3d4e5f6a1b2c3d4e5f6a1b2c3d4e5f6a1b2c3d4e5f6a1b2c3d4e5f6a1b2c3d4
+Status: Downloaded newer image for nginx:latest
+Creating myapp-db-1 ... done
+Creating myapp-cache-1 ... done
+Creating myapp-web-1 ... done
+Creating myapp-worker-1 ... done
+Attaching to myapp-db-1, myapp-cache-1, myapp-web-1, myapp-worker-1
+myapp-cache-1  | 1:C 07 Aug 2026 10:00:00.001 # oO0OoO0OoO0Oo Redis is starting
+myapp-cache-1  | 1:C 07 Aug 2026 10:00:00.002 * Ready to accept connections
+myapp-db-1      | PostgreSQL Database directory appears to contain a database; Skipping initialization
+myapp-db-1      | 2026-08-07 10:00:00.123 UTC [1] LOG:  starting PostgreSQL 15.4
+myapp-db-1      | 2026-08-07 10:00:00.456 UTC [1] LOG:  database system was shut down at 2026-08-06 22:00:00 UTC
+myapp-db-1      | 2026-08-07 10:00:01.789 UTC [1] LOG:  database system is ready to accept connections
+myapp-web-1     | 2026/08/07 10:00:02 [notice] 1#1: start worker processes
+myapp-web-1     | 2026/08/07 10:00:02 [notice] 1#1: start worker process 2
+myapp-web-1     | 2026/08/07 10:00:02 [notice] 1#1: start worker process 3
+myapp-web-1     | 2026/08/07 10:00:02 [notice] 1#1: start worker process 4
+myapp-worker-1  | [INFO] worker started, pid=1
+myapp-worker-1  | [INFO] connected to db and cache
+myapp-worker-1  | [ERROR] failed to process job batch-42: connection reset by peer
+myapp-worker-1  | [ERROR] retrying job batch-42 in 5s
+myapp-worker-1 exited with code 1
+Gracefully stopping... (press Ctrl-C again to force)
+Stopping myapp-web-1    ... done
+Stopping myapp-cache-1  ... done
+Stopping myapp-db-1     ... done
