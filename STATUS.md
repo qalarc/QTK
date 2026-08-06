@@ -4,21 +4,25 @@
 
 ## Unreleased (v0.3.2 in progress)
 
-Three new TS compressors added (each with fixtures + tests, all green):
+Five new TS compressors added (each with fixtures + tests, all green):
 
 | Compressor | Category | What it does | Tests |
 | --- | --- | --- | ---: |
 | `npm` | package-manager | `npm install` / `pnpm install` / `yarn install` — keeps summary line, deprecations, errors, audit; drops progress bars + dependency tree | 11 |
 | `go` | test-runner | `go test` / `go build` / `go vet` — keeps `ok`/`FAIL` summary + `--- FAIL` lines + build errors; drops `=== RUN`/`--- PASS` per-test noise | 10 |
 | `kubectl` | infra | `kubectl get <resource>` table output — keeps header + healthy/anomaly summary; surfaces Pending/CrashLoopBackOff/ImagePullBackOff/OOMKilled rows, drops healthy `Running` rows | 11 |
+| `docker` | infra | `docker ps -a` / `docker build` / `docker compose up` — ps: keeps header + summary + anomalous rows (Exited/Restarting/unhealthy), drops healthy `Up` rows; build: keeps `Successfully built`/`tagged` + errors, drops `Step N/N` + hash noise; compose: keeps service state changes + errors + exit codes, drops pull noise + log spam | 13 |
+| `make` | build-tool | `make` / `make build` / `make install` — keeps compiler/linker diagnostics (`file.c:LINE:COL: error:`) + source-snippet context + `make: ***` errors + linker errors; drops command echoes (`cc -c ...`) | 11 |
 
-Test count: **115 → 147** (32 new tests, 0 regressions). Typecheck clean.
-All three follow the CONTRIBUTING.md 5-step recipe (file → interface → registry → fixtures → tests).
+Test count: **115 → 171** (56 new tests, 0 regressions). Typecheck clean.
+All five follow the CONTRIBUTING.md 5-step recipe (file → interface → registry → fixtures → tests).
 
 Commits:
 - `bd5b38f` feat: add npm compressor
 - `5245786` feat: add go compressor
 - `883fbe8` feat: add kubectl compressor
+- `fc6c68f` feat: add docker compressor
+- `7ac2c70` feat: add make compressor
 
 ## Latest release — v0.3.1 SHIPPED
 
