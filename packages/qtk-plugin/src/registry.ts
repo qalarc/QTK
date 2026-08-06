@@ -13,6 +13,7 @@ import { pytestCompressor } from "./compressors/pytest.ts";
 import { cargoTestCompressor } from "./compressors/cargo.ts";
 import { npmCompressor } from "./compressors/npm.ts";
 import { goCompressor } from "./compressors/go.ts";
+import { kubectlCompressor } from "./compressors/kubectl.ts";
 import { readToolCompressor } from "./tools/read.ts";
 import { grepToolCompressor } from "./tools/grep.ts";
 import { globToolCompressor } from "./tools/glob.ts";
@@ -33,6 +34,7 @@ export const DEFAULT_COMPRESSORS: readonly Compressor[] = [
   cargoTestCompressor,
   npmCompressor,
   goCompressor,
+  kubectlCompressor,
 ];
 
 export class CompressorRegistry {
