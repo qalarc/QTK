@@ -18,6 +18,7 @@ import { dockerCompressor } from "./compressors/docker.ts";
 import { makeCompressor } from "./compressors/make.ts";
 import { tscCompressor } from "./compressors/tsc.ts";
 import { gradleCompressor } from "./compressors/gradle.ts";
+import { mvnCompressor } from "./compressors/mvn.ts";
 import { readToolCompressor } from "./tools/read.ts";
 import { grepToolCompressor } from "./tools/grep.ts";
 import { globToolCompressor } from "./tools/glob.ts";
@@ -43,6 +44,7 @@ export const DEFAULT_COMPRESSORS: readonly Compressor[] = [
   makeCompressor,
   tscCompressor,
   gradleCompressor,
+  mvnCompressor,
 ];
 
 export class CompressorRegistry {
