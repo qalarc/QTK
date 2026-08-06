@@ -1,0 +1,20 @@
+cc -c -O2 -Wall -Wextra -std=c11 src/main.c -o build/main.o
+cc -c -O2 -Wall -Wextra -std=c11 src/parser.c -o build/parser.o
+cc -c -O2 -Wall -Wextra -std=c11 src/lexer.c -o build/lexer.o
+cc -c -O2 -Wall -Wextra -std=c11 src/ast.c -o build/ast.o
+cc -c -O2 -Wall -Wextra -std=c11 src/codegen.c -o build/codegen.o
+src/codegen.c: In function 'gen_expr':
+src/codegen.c:42:7: warning: implicit declaration of function 'emit_label' [-Wimplicit-function-declaration]
+   42 |       emit_label(ctx, "L_if_end");
+      |       ^~~~~~~~~~
+src/codegen.c:42:7: warning: implicit declaration of function 'emit_label' [-Wimplicit-function-declaration]
+src/codegen.c:58:5: error: unknown type name 'CodegenCtx'
+   58 |     CodegenCtx *ctx = gen_ctx_new(unit);
+      |     ^~~~~~~~~~
+src/codegen.c: In function 'gen_stmt':
+src/codegen.c:91:15: error: 'StmtKind' has no member named 'STMT_FOR'
+   91 |         case STMT_FOR:
+      |               ^~~~~~~~
+cc -c -O2 -Wall -Wextra -std=c11 src/optimizer.c -o build/optimizer.o
+cc -c -O2 -Wall -Wextra -std=c11 src/linker.c -o build/linker.o
+make: *** [Makefile:24: build/codegen.o] Error 1

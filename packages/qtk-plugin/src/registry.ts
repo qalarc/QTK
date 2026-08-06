@@ -15,6 +15,7 @@ import { npmCompressor } from "./compressors/npm.ts";
 import { goCompressor } from "./compressors/go.ts";
 import { kubectlCompressor } from "./compressors/kubectl.ts";
 import { dockerCompressor } from "./compressors/docker.ts";
+import { makeCompressor } from "./compressors/make.ts";
 import { readToolCompressor } from "./tools/read.ts";
 import { grepToolCompressor } from "./tools/grep.ts";
 import { globToolCompressor } from "./tools/glob.ts";
@@ -37,6 +38,7 @@ export const DEFAULT_COMPRESSORS: readonly Compressor[] = [
   goCompressor,
   kubectlCompressor,
   dockerCompressor,
+  makeCompressor,
 ];
 
 export class CompressorRegistry {
