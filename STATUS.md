@@ -4,7 +4,7 @@
 
 ## Unreleased (v0.3.2 in progress)
 
-Eight new TS compressors added (each with fixtures + tests, all green):
+Nine new TS compressors added (each with fixtures + tests, all green):
 
 | Compressor | Category | What it does | Tests |
 | --- | --- | --- | ---: |
@@ -16,9 +16,10 @@ Eight new TS compressors added (each with fixtures + tests, all green):
 | `tsc` | build-tool | `tsc` / `npx tsc` / `tsc -b` — keeps every distinct diagnostic (`file.ts(L,C): error TSxxxx:`), drops exact-duplicate adjacent lines (incremental-build echo), groups by file, keeps `Found N errors in M files.` summary; drops watch-mode + version noise | 11 |
 | `gradle` | build-tool | `gradle build` / `./gradlew test` — keeps failed task lines (`> Task :...: FAILED`) + javac diagnostics (`file.java:LINE: error:`) + test failures + stack traces + `* What went wrong:` block + `BUILD FAILED` summary; drops successful `> Task :...` lines, download noise, config/deprecation chatter | 14 |
 | `mvn` | build-tool | `mvn install` / `mvn test` / `mvn clean install` — keeps `[ERROR]` lines + javac diagnostics (`file.java:[LINE,COL]`) + test results (`Tests run: X, Failures: Y...`) + failure details + `BUILD FAILURE`/`SUCCESS` + Reactor Summary + `Caused by:` chains; drops `[INFO]` chatter, download progress, plugin-execution banners, build-order list | 14 |
+| `dotnet` | build-tool | `dotnet build` / `dotnet test` / `dotnet publish` — keeps compiler diagnostics (`file.cs(L,C): error CSxxxx:`, strips `[project]` suffix) + warnings + error/warning count + test failures with `Error Message`/`Stack Trace` blocks + `Passed`/`Failed`/`Total tests` summary + `Build FAILED`/`succeeded` verdict; drops restore noise, link lines, passing-test lines, MSBuild/test banners, timing | 13 |
 
-Test count: **115 → 210** (95 new tests, 0 regressions). Typecheck clean.
-All eight follow the CONTRIBUTING.md 5-step recipe (file → interface → registry → fixtures → tests).
+Test count: **115 → 223** (108 new tests, 0 regressions). Typecheck clean.
+All nine follow the CONTRIBUTING.md 5-step recipe (file → interface → registry → fixtures → tests).
 
 Commits:
 - `bd5b38f` feat: add npm compressor
@@ -29,6 +30,7 @@ Commits:
 - `58d8b71` feat: add tsc compressor
 - `f10282b` feat: add gradle compressor
 - `2133870` feat: add mvn compressor
+- `ef99849` feat: add dotnet compressor
 
 ## Latest release — v0.3.1 SHIPPED
 
