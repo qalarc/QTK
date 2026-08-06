@@ -11,6 +11,7 @@ import { lsCompressor } from "./compressors/ls.ts";
 import { rgCompressor } from "./compressors/rg.ts";
 import { pytestCompressor } from "./compressors/pytest.ts";
 import { cargoTestCompressor } from "./compressors/cargo.ts";
+import { npmCompressor } from "./compressors/npm.ts";
 import { readToolCompressor } from "./tools/read.ts";
 import { grepToolCompressor } from "./tools/grep.ts";
 import { globToolCompressor } from "./tools/glob.ts";
@@ -29,6 +30,7 @@ export const DEFAULT_COMPRESSORS: readonly Compressor[] = [
   rgCompressor,
   pytestCompressor,
   cargoTestCompressor,
+  npmCompressor,
 ];
 
 export class CompressorRegistry {
