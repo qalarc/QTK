@@ -17,6 +17,7 @@ import { kubectlCompressor } from "./compressors/kubectl.ts";
 import { dockerCompressor } from "./compressors/docker.ts";
 import { makeCompressor } from "./compressors/make.ts";
 import { tscCompressor } from "./compressors/tsc.ts";
+import { gradleCompressor } from "./compressors/gradle.ts";
 import { readToolCompressor } from "./tools/read.ts";
 import { grepToolCompressor } from "./tools/grep.ts";
 import { globToolCompressor } from "./tools/glob.ts";
@@ -41,6 +42,7 @@ export const DEFAULT_COMPRESSORS: readonly Compressor[] = [
   dockerCompressor,
   makeCompressor,
   tscCompressor,
+  gradleCompressor,
 ];
 
 export class CompressorRegistry {

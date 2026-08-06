@@ -1,0 +1,69 @@
+> Configure project :
+Using Gradle 8.7
+The automatic loading of test framework implementation dependencies some deprecated behavior. This is scheduled to be removed in Gradle 9.0. Execute 'gradle :help --task :test' for more details.
+> Configure project :app
+Resolving dependencies of :app
+> Configure project :core
+Resolving dependencies of :core
+> Configure project :web
+Resolving dependencies of :web
+> Task :core:compileJava
+Downloading https://repo.maven.apache.org/maven2/org/slf4j/slf4j-api/2.0.9/slf4j-api-2.0.9.jar
+Downloading https://repo.maven.apache.org/maven2/com/google/guava/guava/32.1.3-jre/guava-32.1.3-jre.jar
+Downloading https://repo.maven.apache.org/maven2/org/apache/commons/commons-lang3/3.13.0/commons-lang3-3.13.0.jar
+Downloaded https://repo.maven.apache.org/maven2/org/slf4j/slf4j-api/2.0.9/slf4j-api-2.0.9.jar
+Downloaded https://repo.maven.apache.org/maven2/com/google/guava/guava/32.1.3-jre/guava-32.1.3-jre.jar
+Downloaded https://repo.maven.apache.org/maven2/org/apache/commons/commons-lang3/3.13.0/commons-lang3-3.13.0.jar
+> Task :core:processResources NO-SOURCE
+> Task :core:classes
+> Task :core:jar
+> Task :app:compileJava
+core/src/main/java/com/example/core/Parser.java:14: error: cannot find symbol
+    private Tokenizer tokenizer;
+            ^
+  symbol:   class Tokenizer
+  location: class Parser
+core/src/main/java/com/example/core/Parser.java:28: error: incompatible types: int cannot be converted to String
+        return tokenizer.parse(42);
+                               ^
+Note: Some input files use or override a deprecated API.
+Note: Recompile with -Xlint:deprecation for details.
+Note: Some input files use unchecked or unsafe operations.
+Note: Recompile with -Xlint:unchecked for details.
+2 errors
+> Task :app:compileJava FAILED
+> Task :web:compileJava
+> Task :web:processResources
+> Task :web:classes
+> Task :core:test
+com.example.core.TokenizerTest > testEmptyInput() FAILED
+    java.lang.AssertionError: expected:<0> but was:<-1>
+        at org.junit.Assert.fail(Assert.java:89)
+        at com.example.core.TokenizerTest.testEmptyInput(TokenizerTest.java:42)
+com.example.core.TokenizerTest > testSingleToken() PASSED
+com.example.core.ParserTest > testParseValid() PASSED
+com.example.core.ParserTest > testParseInvalid() FAILED
+    org.opentest4j.AssertionFailedError: expected string to be 'ERROR' but was 'OK'
+        at com.example.core.ParserTest.testParseInvalid(ParserTest.java:88)
+4 tests completed, 2 failed
+> Task :core:test FAILED
+> Task :app:test NO-SOURCE
+> Task :web:test NO-SOURCE
+> Task :app:assemble
+> Task :web:assemble
+
+FAILURE: Build failed with an exception.
+
+* What went wrong:
+Execution failed for task ':app:compileJava'.
+> Compilation failed; see the compiler error output for details.
+
+* Try:
+> Run with --stacktrace option to get the stack trace.
+> Run with --info or --debug option to get more log output.
+> Run with --scan to get full insights.
+
+* Get more help at https https://gradle.org/help/
+
+BUILD FAILED in 12s
+7 actionable tasks: 7 executed, 2 from cache
