@@ -1,0 +1,67 @@
+MSBuild version 17.9.8+b34f75857 for .NET
+  Determining projects to restore...
+  Restored /home/user/project/src/App/App.csproj (in 1.23 sec).
+  Restored /home/user/project/src/Core/Core.csproj (in 456 ms).
+  Restored /home/user/project/src/Tests/Tests.csproj (in 892 ms).
+/home/user/project/src/Core/Parser.cs(14,8): error CS0246: The type or namespace name 'Tokenizer' could not be found (are you missing a using directive or an assembly reference?) [/home/user/project/src/Core/Core.csproj]
+/home/user/project/src/Core/Parser.cs(28,18): error CS1503: Argument 1: cannot convert from 'int' to 'string' [/home/user/project/src/Core/Core.csproj]
+/home/user/project/src/Core/Lexer.cs(5,12): error CS0234: The type or namespace name 'Logging' does not exist in the namespace 'Microsoft' (are you missing an assembly reference?) [/home/user/project/src/Core/Core.csproj]
+/home/user/project/src/Core/Lexer.cs(42,7): warning CS0168: The variable 'token' is declared but never used [/home/user/project/src/Core/Core.csproj]
+/home/user/project/src/Core/Lexer.cs(58,3): warning CS0618: 'ConsoleLogger' is obsolete: Use StructuredLogger instead. [/home/user/project/src/Core/Core.csproj]
+    3 Error(s)
+    2 Warning(s)
+
+Time Elapsed 00:00:02.34
+
+Build FAILED.
+
+MSBuild version 17.9.8+b34f75857 for .NET
+  Determining projects to restore...
+  Restored /home/user/project/src/App/App.csproj (in 312 ms).
+/home/user/project/src/App/Program.cs(10,5): error CS0103: The name 'Initialize' does not exist in the current context [/home/user/project/src/App/App.csproj]
+/home/user/project/src/App/Program.cs(22,18): error CS0029: Cannot implicitly convert type 'object' to 'string' [/home/user/project/src/App/App.csproj]
+    2 Error(s)
+    0 Warning(s)
+
+Time Elapsed 00:00:01.12
+
+Build FAILED.
+
+MSBuild version 17.9.8+b34f75857 for .NET
+  Determining projects to restore...
+  Restored /home/user/project/src/Tests/Tests.csproj (in 234 ms).
+  Restored /home/user/project/src/Tests/Tests.csproj (in 234 ms).
+Test run for /home/user/project/src/Tests/bin/Debug/net8.0/Tests.dll(.NETCoreApp,Version=v8.0)
+Microsoft (R) Test Execution Command Line Tool Version 17.9.0
+Copyright (c) Microsoft Corporation.  All rights reserved.
+
+Starting test execution, please wait...
+A total of 1 test files matched the specified pattern.
+  Failed Tests.ParserTests.TestParseValid [1 ms]
+  Error Message:
+     Expected string length 5 but was 4. Strings differ at index 4.
+     Expected: "ERROR"
+     But was:  "ERRO"
+  Stack Trace:
+     at Tests.ParserTests.TestParseValid() in /home/user/project/src/Tests/ParserTests.cs:line 88
+     at System.RuntimeMethodHandle.InvokeMethod(Object target, Void** arguments, Signature sig, Boolean construct)
+  Failed Tests.ParserTests.TestParseInvalid [1 ms]
+  Error Message:
+     Assert.Throws() failed: no exception was thrown
+  Stack Trace:
+     at Tests.ParserTests.TestParseInvalid() in /home/user/project/src/Tests/ParserTests.cs:line 102
+  Passed Tests.ParserTests.TestEmptyInput [1 ms]
+  Passed Tests.ParserTests.TestSingleToken [1 ms]
+  Passed Tests.LexerTests.TestTokenize [1 ms]
+  Passed Tests.LexerTests.TestWhitespace [1 ms]
+
+Passed: 4
+Failed: 2
+Total tests: 6
+     Not Run
+
+Build succeeded. 0 Error(s)
+
+Time Elapsed 00:00:03.45
+
+Build succeeded.
