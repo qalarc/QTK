@@ -1,0 +1,27 @@
+src/index.ts(12,5): error TS2322: Type 'string' is not assignable to type 'number'.
+src/index.ts(12,5): error TS2322: Type 'string' is not assignable to type 'number'.
+src/index.ts(45,18): error TS2304: Cannot find name 'foo'.
+src/parser.ts(8,3): error TS2322: Type 'undefined' is not assignable to type 'Config'.
+src/parser.ts(102,7): error TS2365: Operator '>' cannot be applied to types 'string' and 'number'.
+src/parser.ts(102,7): error TS2365: Operator '>' cannot be applied to types 'string' and 'number'.
+src/lexer.ts(3,1): error TS2307: Cannot find module './tokens' or its corresponding type declarations.
+src/lexer.ts(15,10): error TS2531: Object is possibly 'null'.
+src/lexer.ts(15,10): error TS2531: Object is possibly 'null'.
+src/lexer.ts(28,22): error TS2532: Object is possibly 'undefined'.
+src/ast.ts(5,1): error TS2307: Cannot find module './visitor' or its corresponding type declarations.
+src/ast.ts(44,5): error TS2339: Property 'kind' does not exist on type 'Node'.
+src/ast.ts(44,5): error TS2339: Property 'kind' does not exist on type 'Node'.
+src/ast.ts(89,12): error TS2345: Argument of type 'string' is not assignable to parameter of type 'Expr'.
+src/codegen.ts(1,1): error TS1375: 'await' expressions are only allowed within async functions.
+src/codegen.ts(33,7): error TS2367: Comparison appears to be unintentional because the types '"a"' and '"b"' have no overlap.
+src/codegen.ts(58,3): error TS2554: Expected 2 arguments, but got 1.
+src/codegen.ts(58,3): error TS2554: Expected 2 arguments, but got 1.
+src/codegen.ts(91,15): error TS2533: Cannot assign to 'length' because it is a read-only property.
+src/optimizer.ts(7,1): error TS1208: 'optimize' cannot be used as a value because it was exported using 'export type'.
+src/optimizer.ts(22,9): error TS18048: 'value' is possibly 'undefined'.
+src/optimizer.ts(22,9): error TS18048: 'value' is possibly 'undefined'.
+src/optimizer.ts(70,4): error TS2322: Type 'Node[]' is not assignable to type 'Node'.
+src/linker.ts(10,1): error TS2304: Cannot find name 'LinkUnit'.
+src/linker.ts(34,12): error TS2351: Cannot assign to 'target' because it is a read-only property.
+
+Found 24 errors in 6 files.
