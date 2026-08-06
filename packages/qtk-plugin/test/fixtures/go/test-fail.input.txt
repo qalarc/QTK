@@ -1,0 +1,47 @@
+=== RUN   TestAddition
+=== RUN   TestAddition/positive_numbers
+=== RUN   TestAddition/negative_numbers
+=== RUN   TestSubtraction
+=== RUN   TestSubtraction/borrow
+=== RUN   TestMultiply
+=== RUN   TestMultiply/large_numbers
+=== RUN   TestMultiply/zero
+=== RUN   TestDivide
+=== RUN   TestDivide/by_zero
+=== RUN   TestStringConcat
+=== RUN   TestStringConcat/empty
+=== RUN   TestStringConcat/unicode
+=== RUN   TestSort
+=== RUN   TestSort/ascending
+=== RUN   TestSort/descending
+=== RUN   TestMap
+=== RUN   TestMap/insert
+=== RUN   TestMap/delete
+=== RUN   TestSlice
+=== RUN   TestSlice/append
+=== RUN   TestSlice/copy
+--- PASS: TestAddition (0.00s)
+    --- PASS: TestAddition/positive_numbers (0.00s)
+    --- PASS: TestAddition/negative_numbers (0.00s)
+--- PASS: TestSubtraction (0.00s)
+    --- PASS: TestSubtraction/borrow (0.00s)
+--- PASS: TestMultiply (0.00s)
+    --- PASS: TestMultiply/large_numbers (0.00s)
+    --- PASS: TestMultiply/zero (0.00s)
+--- FAIL: TestDivide (0.00s)
+    --- FAIL: TestDivide/by_zero (0.00s)
+--- PASS: TestStringConcat (0.00s)
+    --- PASS: TestStringConcat/empty (0.00s)
+    --- PASS: TestStringConcat/unicode (0.00s)
+--- PASS: TestSort (0.00s)
+    --- PASS: TestSort/ascending (0.00s)
+    --- PASS: TestSort/descending (0.00s)
+--- PASS: TestMap (0.00s)
+    --- PASS: TestMap/insert (0.00s)
+    --- PASS: TestMap/delete (0.00s)
+--- PASS: TestSlice (0.00s)
+    --- PASS: TestSlice/append (0.00s)
+    --- PASS: TestSlice/copy (0.00s)
+FAIL
+FAIL	github.com/example/math	0.234s
+ok  	github.com/example/utils	0.012s
