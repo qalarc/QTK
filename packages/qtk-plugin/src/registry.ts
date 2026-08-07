@@ -14,6 +14,7 @@ import { pytestVCompressor } from "./compressors/pytest-v.ts";
 import { cargoTestCompressor } from "./compressors/cargo.ts";
 import { npmCompressor } from "./compressors/npm.ts";
 import { goCompressor } from "./compressors/go.ts";
+import { goVetCompressor } from "./compressors/go-vet.ts";
 import { kubectlCompressor } from "./compressors/kubectl.ts";
 import { dockerCompressor } from "./compressors/docker.ts";
 import { makeCompressor } from "./compressors/make.ts";
@@ -51,6 +52,9 @@ export const DEFAULT_COMPRESSORS: readonly Compressor[] = [
   pytestCompressor,
   cargoTestCompressor,
   npmCompressor,
+  // go-vet BEFORE go (first-match wins; `go vet` is more specific than the
+  // generic go test/build compressor).
+  goVetCompressor,
   goCompressor,
   kubectlCompressor,
   dockerCompressor,

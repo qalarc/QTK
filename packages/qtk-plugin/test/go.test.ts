@@ -1,15 +1,19 @@
-// Tests for the go test/build/vet compressor.
+// Tests for the go test/build compressor.
+//
+// NOTE: `go vet` / `go check` are handled by the dedicated `go-vet` compressor
+// (registered before this one). This compressor covers `go test` / `go build`.
 //
 // Covers:
-//   1. matches go test/build/vet/check
-//   2. does NOT match piped/compound or unrelated commands
-//   3. compresses a failing test run — keeps FAIL lines + summary
-//   4. drops === RUN / --- PASS noise
-//   5. keeps build errors (./file.go:line:col: format)
-//   6. passing run → just the ok summary
-//   7. tiny input passes through
-//   8. garbage input passes through
-//   9. adversarial input doesn't hang
+//   1. matches go test/build
+//   2. does NOT match go vet/check (handled by go-vet compressor)
+//   3. does NOT match piped/compound or unrelated commands
+//   4. compresses a failing test run — keeps FAIL lines + summary
+//   5. drops === RUN / --- PASS noise
+//   6. keeps build errors (./file.go:line:col: format)
+//   7. passing run → just the ok summary
+//   8. tiny input passes through
+//   9. garbage input passes through
+//  10. adversarial input doesn't hang
 
 import { describe, test, expect } from "bun:test";
 import { goCompressor } from "../src/compressors/go.ts";
@@ -17,16 +21,22 @@ import { goCompressor } from "../src/compressors/go.ts";
 const CTX = { args: {}, cwd: "/tmp", config: {} };
 
 describe("go compressor", () => {
-  test("matches go subcommands", () => {
+  test("matches go test/build", () => {
     expect(goCompressor.matches("bash", { command: "go test" })).toBe(true);
     expect(goCompressor.matches("bash", { command: "go test ./..." })).toBe(
       true,
     );
     expect(goCompressor.matches("bash", { command: "go build" })).toBe(true);
+  });
+
+  test("does NOT match go vet/check (handled by go-vet compressor)", () => {
     expect(goCompressor.matches("bash", { command: "go vet ./..." })).toBe(
-      true,
+      false,
     );
-    expect(goCompressor.matches("bash", { command: "go check" })).toBe(true);
+    expect(goCompressor.matches("bash", { command: "go check" })).toBe(false);
+    expect(goCompressor.matches("bash", { command: "go tool vet ." })).toBe(
+      false,
+    );
   });
 
   test("does NOT match piped/compound commands", () => {

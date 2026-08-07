@@ -1,0 +1,17 @@
+go version go1.22.5 linux/amd64
+# example.com/myproject/internal/handler
+./handler.go:42:6: composites: example.com/myproject/pkg.Config composite literal uses unkeyed fields
+./handler.go:58:15: printf: fmt.Printf format %d reads arg #1, but call has 2 args
+./handler.go:71:10: printf: fmt.Sprintf format %s has arg str of type int
+# example.com/myproject/internal/service
+./service.go:15:2: structtag: unknown field tag `jsom` for struct field `Name`
+./service.go:22:6: lostcancel: the cancel function returned by context.WithCancel should be called, not discarded, to avoid a context leak
+./service.go:30:11: shadow: declaration of "err" shadows declaration at line 25
+./service.go:48:3: assign: assigning the result of self.comparison to itself
+# example.com/myproject/internal/store
+./store.go:100:18: printf: (*Store).query format string contains constant verb %v but has no args
+./store.go:120:5: errorsas: second argument to errors.As must be a non-nil pointer to either a type that implements error, or to any interface type
+# example.com/myproject/cmd/cli
+./main.go:12:5: unreachable: unreachable code
+./main.go:25:14: stringintconv: converting untyped int to string
+exit status 3

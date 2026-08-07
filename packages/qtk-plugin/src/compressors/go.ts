@@ -46,7 +46,12 @@ export const goCompressor: Compressor = {
     if (tool.toLowerCase() !== "bash") return false;
     const cmd = typeof args.command === "string" ? args.command.trim() : "";
     if (/[|&;><]/.test(cmd)) return false;
-    return /^go\s+(test|build|vet|check)\b/.test(cmd);
+    // `go vet` is handled by the dedicated `go-vet` compressor (registered
+    // before this one, first-match wins). Exclude it here so the two don't
+    // overlap. `go check` is an alias-ish for vet in some toolchains — also
+    // excluded.
+    if (/^go\s+(vet|tool\s+vet|check)\b/.test(cmd)) return false;
+    return /^go\s+(test|build)\b/.test(cmd);
   },
 
   compress(raw: string): string {
