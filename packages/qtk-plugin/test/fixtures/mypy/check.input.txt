@@ -1,0 +1,20 @@
+mypy 1.10.0 (compiled)
+
+src/app.py:10: error: Name "foo" is not defined  [name-defined]
+src/app.py:15: error: Argument 1 to "process" has incompatible type "str"; expected "int"  [arg-type]
+src/app.py:15: note: Use --warn-unused-ignores to see if you should remove the `# type: ignore` comment
+src/app.py:22: error: "None" has no attribute "split"  [union-attr]
+src/app.py:22: note: Use --warn-unused-ignores to see if you should remove the `# type: ignore` comment
+src/utils.py:8: error: Module "utils" has no attribute "format_date"  [attr-defined]
+src/utils.py:42: error: Incompatible return value type (got "str", expected "int")  [return-value]
+src/utils.py:42: note: Use --warn-unused-ignores to see if you should remove the `# type: ignore` comment
+src/models.py:5: error: Function is missing a return type annotation  [no-untyped-def]
+src/models.py:12: error: List item 0 has incompatible type "str"; expected "int"  [list-item]
+src/models.py:12: note: Use --warn-unused-ignores to see if you should remove the `# type: ignore` comment
+src/handlers.py:30: error: Unsupported operand types for + ("int" and "str")  [operator]
+src/handlers.py:30: note: Use --warn-unused-ignores to see if you should remove the `# type: ignore` comment
+src/config.py:3: error: Cannot find implementation or library stub for module named "settings"  [import-not-found]
+src/config.py:3: note: See https://mypy.readthedocs.io/en/latest/running_mypy.html#missing-imports
+src/config.py:3: note: Use --warn-unused-ignores to see if you should remove the `# type: ignore` comment
+
+Found 11 errors in 5 files (checked 12 source files)
