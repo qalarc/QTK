@@ -1,0 +1,48 @@
+Picked up _JAVA_OPTIONS: -Djava.awt.headless=true -Xmx512m
+Picked up JAVA_TOOL_OPTIONS: -Dfile.encoding=UTF8
+javac 17.0.10
+src/com/example/Main.java:5: error: ';' expected
+    int count = 0
+                 ^
+src/com/example/Main.java:8: error: cannot find symbol
+    symbol:   variable missingVar
+    location: class Main
+    return missingVar;
+           ^
+src/com/example/Main.java:12: warning: [removal] Integer(int) in Integer has been deprecated and marked for removal
+    Integer val = new Integer(42);
+                  ^
+src/com/example/Main.java:3: error: method process in class Main cannot be applied to given types;
+    required: int
+    found:    String
+    reason: argument mismatch; String cannot be converted to int
+    process("hello");
+           ^
+src/com/example/Main.java:15: error: incompatible types: possible lossy conversion from double to int
+    int result = compute(a, b);
+                            ^
+src/com/example/Main.java:20: error: class Main is public, should be declared in a file named Main.java
+public class Main {
+^
+src/com/example/utils/Helper.java:10: error: package com.example.types does not exist
+import com.example.types.Config;
+                       ^
+src/com/example/utils/Helper.java:25: error: cannot find symbol
+    symbol:   class Config
+    location: class Helper
+    private Config buildConfig() {
+            ^
+src/com/example/utils/Helper.java:30: warning: [unchecked] unchecked call to add(E) as a member of the raw type List
+    list.add("item");
+            ^
+src/com/example/utils/Helper.java:35: error: unreported exception IOException; must be caught or declared to be thrown
+    Files.readAllBytes(path);
+                       ^
+Note: src/com/example/Main.java uses or overrides a deprecated API.
+Note: Recompile with -Xlint:deprecation for details.
+Note: src/com/example/Main.java uses unchecked or unsafe operations.
+Note: Recompile with -Xlint:unchecked for details.
+Note: Some input files use or override a deprecated API.
+Note: Some input files use unchecked or unsafe operations.
+8 errors
+2 warnings
