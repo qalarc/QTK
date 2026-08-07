@@ -4,7 +4,7 @@
 
 ## Unreleased (v0.3.2 in progress)
 
-Eleven new TS compressors added (each with fixtures + tests, all green):
+Twelve new TS compressors added (each with fixtures + tests, all green):
 
 | Compressor | Category | What it does | Tests |
 | --- | --- | --- | ---: |
@@ -19,9 +19,10 @@ Eleven new TS compressors added (each with fixtures + tests, all green):
 | `dotnet` | build-tool | `dotnet build` / `dotnet test` / `dotnet publish` — keeps compiler diagnostics (`file.cs(L,C): error CSxxxx:`, strips `[project]` suffix) + warnings + error/warning count + test failures with `Error Message`/`Stack Trace` blocks + `Passed`/`Failed`/`Total tests` summary + `Build FAILED`/`succeeded` verdict; drops restore noise, link lines, passing-test lines, MSBuild/test banners, timing | 13 |
 | `ansible` | infra | `ansible-playbook site.yml` — keeps `PLAY [target]` headers + `TASK [role : task]` headers (only when they have changed/failed results) + `changed: [host]` + `fatal: [host]: FAILED!` (with JSON detail) + the full `PLAY RECAP` table + `ERROR!` lines; drops `ok: [host]` lines (the bulk of a successful run), `skipping:`, `META: ran handlers`, non-actionable `[WARNING]` banners | 14 |
 | `terraform` | infra | `terraform plan` / `terraform apply` — keeps resource action markers (`# <res> will be created/destroyed/updated/replaced`) + the `+`/`-`/`~`/`-/+` diff lines + `Plan: N to add, M to change, K to destroy.` summary + `Changes to Outputs` block + `Apply complete!` + `Error:` lines; drops `Refreshing state...` / `data.*: Reading`/`Read complete` refresh noise, provider preamble, symbol legend, decorative borders, plan-file epilogue | 14 |
+| `shellcheck` | linter | `shellcheck *.sh` — keeps `In <file> line N:` location headers + source lines (context) + `^-- SCxxxx (severity): message.` finding lines; drops the `For more information:` wiki URL epilogue (URLs are derivable from SC codes) | 12 |
 
-Test count: **115 → 251** (136 new tests, 0 regressions). Typecheck clean.
-All eleven follow the CONTRIBUTING.md 5-step recipe (file → interface → registry → fixtures → tests).
+Test count: **115 → 263** (148 new tests, 0 regressions). Typecheck clean.
+All twelve follow the CONTRIBUTING.md 5-step recipe (file → interface → registry → fixtures → tests).
 
 Commits:
 - `bd5b38f` feat: add npm compressor
@@ -35,6 +36,7 @@ Commits:
 - `ef99849` feat: add dotnet compressor
 - `11ae0ae` feat: add ansible compressor
 - `b8c9cde` feat: add terraform compressor
+- `d659f71` feat: add shellcheck compressor
 
 ## Latest release — v0.3.1 SHIPPED
 
