@@ -1,0 +1,41 @@
+Checking formatting...
+[warn] src/app.ts
+[warn] src/utils.ts
+[warn] src/components/Header.tsx
+[warn] src/hooks/useAuth.ts
+[warn] src/pages/Dashboard.tsx
+[warn] src/lib/api.ts
+[warn] src/styles/global.css
+[warn] src/config/database.ts
+[warn] src/middleware/auth.ts
+[warn] src/routes/users.ts
+[warn] src/services/UserService.ts
+[warn] src/types/index.ts
+[warn] src/utils/helpers.ts
+[warn] src/utils/constants.ts
+[warn] src/utils/logger.ts
+[warn] src/store/index.ts
+[warn] src/store/reducers.ts
+[warn] src/store/actions.ts
+[warn] src/validators/schema.ts
+[warn] src/transformers/csv.ts
+[warn] src/transformers/json.ts
+[warn] src/transformers/xml.ts
+[warn] src/workers/background.ts
+[warn] src/workers/scheduler.ts
+[warn] src/workers/queue.ts
+[warn] src/errors/ApiError.ts
+[warn] src/errors/ValidationError.ts
+[warn] src/errors/DatabaseError.ts
+[warn] src/migrations/001_init.ts
+[warn] src/migrations/002_users.ts
+[warn] src/migrations/003_sessions.ts
+[warn] src/seeders/users.ts
+[warn] src/seeders/sessions.ts
+[warn] src/templates/email.ts
+[warn] src/templates/sms.ts
+[warn] src/templates/push.ts
+[error] src/broken.ts: SyntaxError: Unexpected token (5:10)
+[error] src/also-broken.js: SyntaxError: Unexpected end of input (12:0)
+[error] src/truncated.css: SyntaxError: Unclosed block (88:4)
+Code style issues found in 40 files. Forgot to run Prettier?
