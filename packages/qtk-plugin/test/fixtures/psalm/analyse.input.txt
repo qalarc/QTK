@@ -1,0 +1,23 @@
+Target PHP version: 8.1 (inferred from composer.json)
+Scanning files...
+Analyzing files...
+
+-----------------------------
+Psalm 5.20.0@3c47cd0569cc1a5a3a4e92353f02e9c9f06a15d9
+-----------------------------
+
+To fix the errors found, run Psalm with the flag --alter --issues=all
+
+ERROR: UndefinedClass - src/App.php:10:5 - Class App not found (see https://psalm.dev/docs/running_psalm/issues/UndefinedClass/)
+ERROR: NullArgument - src/Service/UserService.php:42:23 - Argument 1 of
+  App\Service\UserService::find(int $id) cannot be null, expecting int
+ERROR: PossiblyNullReference - src/Controller/AuthController.php:8:10 -
+  Cannot call method login() on possibly null value of type App\User|null
+INFO: MissingReturnType - src/Handler.php:15 - Method App\Handler::process
+  does not have a return type, expecting void
+
+----------------------------
+4 errors found
+----------------------------
+
+To fix the errors found, run Psalm with the flag --alter --issues=all

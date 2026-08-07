@@ -1,0 +1,19 @@
+Checking src/init.lua                                  4 warnings
+Checking src/utils.lua                                 2 warnings
+Checking src/handlers.lua                              1 error / 1 warning
+
+src/init.lua:2:1: (W111) setting non-standard global variable 'path'
+src/init.lua:5:10: (W112) accessing undefined variable 'undefined_fn'
+src/init.lua:10:1: (W113) setting non-standard global variable 'config'
+src/init.lua:15:3: (W211) unused variable 'helper'
+src/utils.lua:8:3: (W212) unused argument 'self'
+src/utils.lua:15:1: (W113) setting non-standard global variable 'debug'
+src/handlers.lua:20:5: (E011) expected statement near '='
+src/handlers.lua:30:1: (W314) trailing whitespace in a string
+
+Total: 1 error / 7 warnings in 3 files
+
+Files: 3
+Lines: 142
+Checks: 8
+Globals: 3

@@ -1,0 +1,43 @@
+{
+  "totals": {
+    "errors": 4,
+    "file_errors": 4
+  },
+  "files": {
+    "src/App.php": {
+      "errors": 2,
+      "messages": [
+        {
+          "message": "Class App not found.",
+          "line": 10,
+          "ignorable": true
+        },
+        {
+          "message": "Cannot access property $name on App|null.",
+          "line": 15,
+          "ignorable": true
+        }
+      ]
+    },
+    "src/Service/UserService.php": {
+      "errors": 1,
+      "messages": [
+        {
+          "message": "Method App\\Service\\UserService::find() should return App\\User but returns App\\Model\\User|null.",
+          "line": 42,
+          "ignorable": true
+        }
+      ]
+    },
+    "src/Controller/AuthController.php": {
+      "errors": 1,
+      "messages": [
+        {
+          "message": "Cannot call method login() on App\\User|null.",
+          "line": 8,
+          "ignorable": true
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,47 @@
+Note: Using version 1.10.67
+
+ 1/20 [▓░░░░░░░░░░░░░░░░░░░] 5%
+ 2/20 [▓▓░░░░░░░░░░░░░░░░░░] 10%
+ 3/20 [▓▓▓░░░░░░░░░░░░░░░░░] 15%
+ 4/20 [▓▓▓▓░░░░░░░░░░░░░░░░] 20%
+ 5/20 [▓▓▓▓▓░░░░░░░░░░░░░░░] 25%
+ 6/20 [▓▓▓▓▓▓░░░░░░░░░░░░░░] 30%
+ 7/20 [▓▓▓▓▓▓▓░░░░░░░░░░░░░] 35%
+ 8/20 [▓▓▓▓▓▓▓▓░░░░░░░░░░░░] 40%
+ 9/20 [▓▓▓▓▓▓▓▓▓░░░░░░░░░░░] 45%
+ 10/20 [▓▓▓▓▓▓▓▓▓▓░░░░░░░░░░] 50%
+ 11/20 [▓▓▓▓▓▓▓▓▓▓▓░░░░░░░░░] 55%
+ 12/20 [▓▓▓▓▓▓▓▓▓▓▓▓░░░░░░░░] 60%
+ 13/20 [▓▓▓▓▓▓▓▓▓▓▓▓▓░░░░░░░] 65%
+ 14/20 [▓▓▓▓▓▓▓▓▓▓▓▓▓▓░░░░░░] 70%
+ 15/20 [▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓░░░░░] 75%
+ 16/20 [▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓░░░░] 80%
+ 17/20 [▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓░░░] 85%
+ 18/20 [▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓░░] 90%
+ 19/20 [▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓░] 95%
+ 20/20 [▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓] 100%
+
+
+
+ 1) src/File1.php:5: Some phpstan finding number 1 about types.
+ 2) src/File2.php:10: Some phpstan finding number 2 about types.
+ 3) src/File3.php:15: Some phpstan finding number 3 about types.
+ 4) src/File4.php:20: Some phpstan finding number 4 about types.
+ 5) src/File5.php:25: Some phpstan finding number 5 about types.
+ 6) src/File6.php:30: Some phpstan finding number 6 about types.
+ 7) src/File7.php:35: Some phpstan finding number 7 about types.
+ 8) src/File8.php:40: Some phpstan finding number 8 about types.
+ 9) src/File9.php:45: Some phpstan finding number 9 about types.
+ 10) src/File10.php:50: Some phpstan finding number 10 about types.
+ 11) src/File11.php:55: Some phpstan finding number 11 about types.
+ 12) src/File12.php:60: Some phpstan finding number 12 about types.
+ 13) src/File13.php:65: Some phpstan finding number 13 about types.
+ 14) src/File14.php:70: Some phpstan finding number 14 about types.
+ 15) src/File15.php:75: Some phpstan finding number 15 about types.
+ 16) src/File16.php:80: Some phpstan finding number 16 about types.
+ 17) src/File17.php:85: Some phpstan finding number 17 about types.
+ 18) src/File18.php:90: Some phpstan finding number 18 about types.
+ 19) src/File19.php:95: Some phpstan finding number 19 about types.
+ 20) src/File20.php:100: Some phpstan finding number 20 about types.
+
+ ✘  [ERROR] Found 20 errors

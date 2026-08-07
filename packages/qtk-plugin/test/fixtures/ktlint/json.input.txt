@@ -1,0 +1,36 @@
+[
+  {
+    "file": "src/main/kotlin/com/example/App.kt",
+    "errors": [
+      {
+        "line": 10,
+        "column": 1,
+        "message": "File name 'App.kt' should conform to the corresponding class name 'Main'",
+        "rule": "filename"
+      },
+      {
+        "line": 15,
+        "column": 5,
+        "message": "Class name should be PascalCase",
+        "rule": "standard:class-naming"
+      }
+    ]
+  },
+  {
+    "file": "src/main/kotlin/com/example/Service.kt",
+    "errors": [
+      {
+        "line": 8,
+        "column": 1,
+        "message": "Import must be ordered",
+        "rule": "standard:import-ordering"
+      },
+      {
+        "line": 42,
+        "column": 80,
+        "message": "Exceeded max line length (100)",
+        "rule": "standard:max-line-length"
+      }
+    ]
+  }
+]

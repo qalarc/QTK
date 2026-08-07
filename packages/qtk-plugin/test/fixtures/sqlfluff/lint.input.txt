@@ -1,0 +1,74 @@
+sqlfluff 2.3.5 (Python 3.11.4)
+Loading config from .sqlfluff
+Config path: /home/user/project/.sqlfluff
+Using dialect: postgres
+Using templater: jinja
+Loading rules from sqlfluff:rules
+Loaded 62 rules.
+Config section [sqlfluff] found.
+Config section [sqlfluff:rules] found.
+Config section [sqlfluff:templater:jinja] found.
+
+
+== [src/models/file1.sql] FAIL
+L:    3 | P:   1 | L001 | Some sqlfluff finding number 1 about SQL style.
+
+== [src/models/file2.sql] FAIL
+L:    6 | P:   2 | L002 | Some sqlfluff finding number 2 about SQL style.
+
+== [src/models/file3.sql] FAIL
+L:    9 | P:   3 | L003 | Some sqlfluff finding number 3 about SQL style.
+
+== [src/models/file4.sql] FAIL
+L:   12 | P:   4 | L004 | Some sqlfluff finding number 4 about SQL style.
+
+== [src/models/file5.sql] FAIL
+L:   15 | P:   5 | L005 | Some sqlfluff finding number 5 about SQL style.
+
+== [src/models/file6.sql] FAIL
+L:   18 | P:   6 | L006 | Some sqlfluff finding number 6 about SQL style.
+
+== [src/models/file7.sql] FAIL
+L:   21 | P:   7 | L007 | Some sqlfluff finding number 7 about SQL style.
+
+== [src/models/file8.sql] FAIL
+L:   24 | P:   8 | L008 | Some sqlfluff finding number 8 about SQL style.
+
+== [src/models/file9.sql] FAIL
+L:   27 | P:   9 | L009 | Some sqlfluff finding number 9 about SQL style.
+
+== [src/models/file10.sql] FAIL
+L:   30 | P:  10 | L000 | Some sqlfluff finding number 10 about SQL style.
+
+== [src/models/file11.sql] FAIL
+L:   33 | P:  11 | L001 | Some sqlfluff finding number 11 about SQL style.
+
+== [src/models/file12.sql] FAIL
+L:   36 | P:  12 | L002 | Some sqlfluff finding number 12 about SQL style.
+
+== [src/models/file13.sql] FAIL
+L:   39 | P:  13 | L003 | Some sqlfluff finding number 13 about SQL style.
+
+== [src/models/file14.sql] FAIL
+L:   42 | P:  14 | L004 | Some sqlfluff finding number 14 about SQL style.
+
+== [src/models/file15.sql] FAIL
+L:   45 | P:  15 | L005 | Some sqlfluff finding number 15 about SQL style.
+
+== [src/models/file16.sql] FAIL
+L:   48 | P:  16 | L006 | Some sqlfluff finding number 16 about SQL style.
+
+== [src/models/file17.sql] FAIL
+L:   51 | P:  17 | L007 | Some sqlfluff finding number 17 about SQL style.
+
+== [src/models/file18.sql] FAIL
+L:   54 | P:  18 | L008 | Some sqlfluff finding number 18 about SQL style.
+
+== [src/models/file19.sql] FAIL
+L:   57 | P:  19 | L009 | Some sqlfluff finding number 19 about SQL style.
+
+== [src/models/file20.sql] FAIL
+L:   60 | P:  20 | L000 | Some sqlfluff finding number 20 about SQL style.
+
+
+All Finished 📜 🎉!

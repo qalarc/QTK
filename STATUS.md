@@ -1,10 +1,10 @@
 # QTK — Current Build Status
 
-**Last updated:** 2026-08-07
+**Last updated:** 2026-08-08
 
 ## Unreleased (v0.3.2 in progress)
 
-Twenty-seven new TS compressors added (each with fixtures + tests, all green):
+Thirty-two new TS compressors added (each with fixtures + tests, all green):
 
 | Compressor | Category | What it does | Tests |
 | --- | --- | --- | ---: |
@@ -35,9 +35,14 @@ Twenty-seven new TS compressors added (each with fixtures + tests, all green):
 | `swiftc` | compiler | direct `swiftc` / `swift build` (NOT `xcodebuild`) — keeps `file.swift:LINE:COL: error:/warning:/note:` diagnostic headers + source snippets + `^~~~` caret underlines + `<Unknown>:0:` aggregate markers + `error: fatalError` driver summary; deduplicates adjacent identical diagnostics; drops version banners, `Compiling`/`Linking`/`Building` progress, `Finding`/`Found`/`Considering` toolchain-discovery noise | 14 |
 | `javac` | compiler | direct `javac Main.java` (NOT via gradle/mvn — those have their own compressors) — keeps `file.java:LINE: error:/warning:` diagnostic headers + the `symbol:`/`location:`/`required:`/`found:`/`reason:` detail block + source snippets + `^` carets + `Note:` lines + `N errors`/`N warnings` summary; deduplicates adjacent identical diagnostics; drops `Picked up _JAVA_OPTIONS` JVM noise + version banner | 16 |
 | `golangci-lint` | linter | `golangci-lint run` (distinct from `go vet` which is handled by the go-vet compressor — golangci-lint matches the `golangci-lint` command, go-vet matches `go vet`) — keeps `file.go:LINE:COL: <code>: msg (<linter>)` findings (staticcheck, gosimple, govet, errcheck, ineffassign, unused, gocyclo, gomnd, bodyclose...) + the `(<linter>)` continuation tag + `level=error`/`level=warning` markers + `N issues` summary; drops version banner, `level=info` chatter, `Running [linters]...` progress | 16 |
+| `phpstan` | linter | `phpstan analyse` / `vendor/bin/phpstan analyse` — keeps `N) file:line: message` numbered findings + raw `file:line: message` format + wrapped continuation lines + `[ERROR] Found N errors`/`[OK] No errors` summary; parses `--error-format=json` mode (files→messages→compact text); drops version banner (`Note: Using version`), progress bar (`N/M [▓░...] X%`) | 13 |
+| `psalm` | linter | `psalm` / `vendor/bin/psalm` (excludes `--version`/`--alter`/`--init`/`--shepherd`) — keeps `SEVERITY: IssueType - file:line:col - message` finding lines (ERROR/WARNING/INFO/SUPPRESSED) + wrapped continuations + `N errors found` summary; parses `--output-format=json` mode (array→compact text); drops version banner (`Psalm X.Y.Z@hash`), `Target PHP version`, `Scanning`/`Analyzing` progress, `--alter` hint, decorative borders | 14 |
+| `luacheck` | linter | `luacheck .` / `luacheck src/` (excludes `--version`/`--help`) — keeps `file:line:col: (CODE) message` finding lines (E=error/W=warning + 3-digit code) + `Total: N errors / M warnings in K files` summary; drops `Checking <file>` per-file progress lines + the `Files:`/`Lines:`/`Checks:` stat block | 12 |
+| `ktlint` | linter | `ktlint` / `ktlint src/` (excludes `--version`/`--help`/`--format`/`-F` which mutates) — keeps `file.kt:line:col: message` finding lines + wrapped continuations + `Summary errorCount=N penalty=M` line; parses `--reporter=json` mode (array→compact text with rule tags); drops version banner, `Checking`/`Linting`/`Formatting` progress | 12 |
+| `sqlfluff` | linter | `sqlfluff lint` (excludes `--version`/`fix`/`format`/`parse`/`rules`/`dialects`) — keeps `== [file] FAIL` headers + `L: LINE \| P: COL \| CODE \| message` finding lines + `\|`-prefixed continuation lines; parses `--format=json` mode (array→compact text with FAIL headers); drops version banner, `All Finished 📜 🎉!` epilogue | 13 |
 
-Test count: **115 → 473** (358 new tests, 0 regressions). Typecheck clean.
-All twenty-seven follow the CONTRIBUTING.md 5-step recipe (file → interface → registry → fixtures → tests).
+Test count: **115 → 536** (421 new tests, 0 regressions). Typecheck clean.
+All thirty-two follow the CONTRIBUTING.md 5-step recipe (file → interface → registry → fixtures → tests).
 
 Commits:
 - `bd5b38f` feat: add npm compressor

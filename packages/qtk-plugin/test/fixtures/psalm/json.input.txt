@@ -1,0 +1,35 @@
+[
+  {
+    "severity": "error",
+    "line_from": 10,
+    "column_from": 5,
+    "file_name": "src/App.php",
+    "type": "UndefinedClass",
+    "message": "Class App not found",
+    "link": "https://psalm.dev/docs/running_psalm/issues/UndefinedClass/"
+  },
+  {
+    "severity": "error",
+    "line_from": 42,
+    "column_from": 23,
+    "file_name": "src/Service/UserService.php",
+    "type": "NullArgument",
+    "message": "Argument 1 of App\\Service\\UserService::find(int $id) cannot be null, expecting int"
+  },
+  {
+    "severity": "error",
+    "line_from": 8,
+    "column_from": 10,
+    "file_name": "src/Controller/AuthController.php",
+    "type": "PossiblyNullReference",
+    "message": "Cannot call method login() on possibly null value of type App\\User|null"
+  },
+  {
+    "severity": "info",
+    "line_from": 15,
+    "column_from": 1,
+    "file_name": "src/Handler.php",
+    "type": "MissingReturnType",
+    "message": "Method App\\Handler::process does not have a return type, expecting void"
+  }
+]

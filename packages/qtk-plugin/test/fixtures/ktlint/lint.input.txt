@@ -1,0 +1,29 @@
+ktlint 1.3.1 (id: 1.3.1)
+
+src/main/kotlin/com/example/File1.kt:3:1: Some ktlint finding number 1 about style.
+src/main/kotlin/com/example/File2.kt:6:2: Some ktlint finding number 2 about style.
+src/main/kotlin/com/example/File3.kt:9:3: Some ktlint finding number 3 about style.
+Checking src/main/kotlin/com/example/File4.kt
+src/main/kotlin/com/example/File4.kt:12:4: Some ktlint finding number 4 about style.
+src/main/kotlin/com/example/File5.kt:15:5: Some ktlint finding number 5 about style.
+src/main/kotlin/com/example/File6.kt:18:6: Some ktlint finding number 6 about style.
+src/main/kotlin/com/example/File7.kt:21:7: Some ktlint finding number 7 about style.
+Checking src/main/kotlin/com/example/File8.kt
+src/main/kotlin/com/example/File8.kt:24:8: Some ktlint finding number 8 about style.
+src/main/kotlin/com/example/File9.kt:27:9: Some ktlint finding number 9 about style.
+src/main/kotlin/com/example/File10.kt:30:10: Some ktlint finding number 10 about style.
+src/main/kotlin/com/example/File11.kt:33:11: Some ktlint finding number 11 about style.
+Checking src/main/kotlin/com/example/File12.kt
+src/main/kotlin/com/example/File12.kt:36:12: Some ktlint finding number 12 about style.
+src/main/kotlin/com/example/File13.kt:39:13: Some ktlint finding number 13 about style.
+src/main/kotlin/com/example/File14.kt:42:14: Some ktlint finding number 14 about style.
+src/main/kotlin/com/example/File15.kt:45:15: Some ktlint finding number 15 about style.
+Checking src/main/kotlin/com/example/File16.kt
+src/main/kotlin/com/example/File16.kt:48:16: Some ktlint finding number 16 about style.
+src/main/kotlin/com/example/File17.kt:51:17: Some ktlint finding number 17 about style.
+src/main/kotlin/com/example/File18.kt:54:18: Some ktlint finding number 18 about style.
+src/main/kotlin/com/example/File19.kt:57:19: Some ktlint finding number 19 about style.
+Checking src/main/kotlin/com/example/File20.kt
+src/main/kotlin/com/example/File20.kt:60:20: Some ktlint finding number 20 about style.
+
+Summary errorCount=20 penalty=20 (20 errors need correction)

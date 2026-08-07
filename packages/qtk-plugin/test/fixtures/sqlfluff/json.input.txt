@@ -1,0 +1,42 @@
+[
+  {
+    "filepath": "src/models/users.sql",
+    "violations": [
+      {
+        "line_no": 5,
+        "line_pos": 1,
+        "code": "L014",
+        "description": "Unqualified reference 'name' found in single table select."
+      },
+      {
+        "line_no": 10,
+        "line_pos": 5,
+        "code": "L010",
+        "description": "Keywords must be consistently upper case."
+      },
+      {
+        "line_no": 15,
+        "line_pos": 1,
+        "code": "L016",
+        "description": "Line is too long (120 > 80)."
+      }
+    ]
+  },
+  {
+    "filepath": "src/models/orders.sql",
+    "violations": [
+      {
+        "line_no": 8,
+        "line_pos": 3,
+        "code": "L028",
+        "description": "Reference 'id' refers to table 'orders' which is not in the FROM clause."
+      },
+      {
+        "line_no": 20,
+        "line_pos": 1,
+        "code": "CP01",
+        "description": "Keywords must be consistently upper case."
+      }
+    ]
+  }
+]
