@@ -1,0 +1,120 @@
+[WARNING]: No inventory was parsed, only implicit localhost is available
+[WARNING]: provided hosts list is empty, only localhost is available. Note that
+the implicit localhost does not match 'all'
+
+PLAY [webservers] *************************************************************
+
+TASK [Gathering Facts] ********************************************************
+ok: [web01.example.com]
+ok: [web02.example.com]
+ok: [web03.example.com]
+ok: [web04.example.com]
+ok: [web05.example.com]
+ok: [web06.example.com]
+ok: [web07.example.com]
+ok: [web08.example.com]
+ok: [web09.example.com]
+ok: [web10.example.com]
+
+TASK [common : Install base packages] *****************************************
+ok: [web01.example.com]
+ok: [web02.example.com]
+ok: [web03.example.com]
+ok: [web04.example.com]
+ok: [web05.example.com]
+ok: [web06.example.com]
+ok: [web07.example.com]
+ok: [web08.example.com]
+ok: [web09.example.com]
+ok: [web10.example.com]
+
+TASK [common : Ensure ntp is running] *****************************************
+changed: [web01.example.com]
+changed: [web02.example.com]
+changed: [web03.example.com]
+changed: [web04.example.com]
+changed: [web05.example.com]
+changed: [web06.example.com]
+changed: [web07.example.com]
+changed: [web08.example.com]
+changed: [web09.example.com]
+changed: [web10.example.com]
+
+TASK [nginx : Install nginx] **************************************************
+ok: [web01.example.com]
+ok: [web02.example.com]
+ok: [web03.example.com]
+ok: [web04.example.com]
+ok: [web05.example.com]
+ok: [web06.example.com]
+ok: [web07.example.com]
+ok: [web08.example.com]
+ok: [web09.example.com]
+ok: [web10.example.com]
+
+TASK [nginx : Write nginx config] *********************************************
+changed: [web01.example.com]
+changed: [web02.example.com]
+changed: [web03.example.com]
+changed: [web04.example.com]
+changed: [web05.example.com]
+changed: [web06.example.com]
+changed: [web07.example.com]
+changed: [web08.example.com]
+changed: [web09.example.com]
+changed: [web10.example.com]
+
+TASK [nginx : Enable and start nginx] *****************************************
+changed: [web01.example.com]
+ok: [web02.example.com]
+changed: [web03.example.com]
+ok: [web04.example.com]
+changed: [web05.example.com]
+ok: [web06.example.com]
+changed: [web07.example.com]
+ok: [web08.example.com]
+changed: [web09.example.com]
+ok: [web10.example.com]
+
+RUNNING HANDLER [nginx : restart nginx] ***************************************
+changed: [web01.example.com]
+changed: [web03.example.com]
+changed: [web05.example.com]
+changed: [web07.example.com]
+changed: [web09.example.com]
+
+META: ran handlers
+
+PLAY [dbservers] **************************************************************
+
+TASK [Gathering Facts] ********************************************************
+ok: [db01.example.com]
+ok: [db02.example.com]
+
+TASK [postgres : Install postgresql] ******************************************
+ok: [db01.example.com]
+ok: [db02.example.com]
+
+TASK [postgres : Create app database] *****************************************
+changed: [db01.example.com]
+ok: [db02.example.com]
+
+TASK [postgres : Grant privileges] ********************************************
+fatal: [db02.example.com]: FAILED! => {"changed": false, "msg": "role 'appuser' does not exist"}
+changed: [db01.example.com]
+
+NO MORE HOSTS LEFT *************************************************************
+
+PLAY RECAP *********************************************************************
+web01.example.com : ok=7    changed=5    unreachable=0    failed=0    rescued=0    ignored=0
+web02.example.com : ok=7    changed=3    unreachable=0    failed=0    rescued=0    ignored=0
+web03.example.com : ok=7    changed=5    unreachable=0    failed=0    rescued=0    ignored=0
+web04.example.com : ok=7    changed=3    unreachable=0    failed=0    rescued=0    ignored=0
+web05.example.com : ok=7    changed=5    unreachable=0    failed=0    rescued=0    ignored=0
+web06.example.com : ok=7    changed=3    unreachable=0    failed=0    rescued=0    ignored=0
+web07.example.com : ok=7    changed=5    unreachable=0    failed=0    rescued=0    ignored=0
+web08.example.com : ok=7    changed=3    unreachable=0    failed=0    rescued=0    ignored=0
+web09.example.com : ok=7    changed=5    unreachable=0    failed=0    rescued=0    ignored=0
+web10.example.com : ok=7    changed=3    unreachable=0    failed=0    rescued=0    ignored=0
+db01.example.com  : ok=5    changed=2    unreachable=0    failed=0    rescued=0    ignored=0
+db02.example.com  : ok=4    changed=0    unreachable=0    failed=1    rescued=0    ignored=0
