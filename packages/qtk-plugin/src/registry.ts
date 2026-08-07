@@ -31,6 +31,7 @@ import { gccCompressor } from "./compressors/gcc.ts";
 import { ruffCompressor } from "./compressors/ruff.ts";
 import { eslintCompressor } from "./compressors/eslint.ts";
 import { mypyCompressor } from "./compressors/mypy.ts";
+import { pylintCompressor } from "./compressors/pylint.ts";
 import { readToolCompressor } from "./tools/read.ts";
 import { grepToolCompressor } from "./tools/grep.ts";
 import { globToolCompressor } from "./tools/glob.ts";
@@ -72,6 +73,7 @@ export const DEFAULT_COMPRESSORS: readonly Compressor[] = [
   ruffCompressor,
   eslintCompressor,
   mypyCompressor,
+  pylintCompressor,
 ];
 
 export class CompressorRegistry {
