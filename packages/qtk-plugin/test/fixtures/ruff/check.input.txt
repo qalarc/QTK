@@ -1,0 +1,25 @@
+src/app.py:10:5: E999 SyntaxError: invalid syntax
+src/app.py:15:1: F401 'os' imported but unused
+src/app.py:23:5: F841 Local variable `result` is assigned to but never used
+src/utils.py:42:80: E501 Line too long (92 > 79 characters)
+src/utils.py:8:1: E302 Expected 2 blank lines, got 1
+src/utils.py:15:5: E711 Comparison to None should be 'cond is None'
+src/models.py:8:11: E712 Comparison to True should be 'cond is True'
+src/models.py:45:1: F811 Redefinition of unused `User` from line 12
+src/handlers.py:5:1: E402 Module level import not at top of file
+src/handlers.py:30:9: E722 Do not use bare except
+src/config.py:3:1: B008 Do not perform function calls in argument defaults
+src/config.py:12:1: C901 Function is too complex (complexity score: 15)
+
+Found 12 errors.
+* Can fix: 8 (8 auto-fixable)
+
+View the full documentation for some of these errors: https://docs.astral.sh/ruff/rules/E501
+View documentation for E711: https://docs.astral.sh/ruff/rules/comparison-to-none
+View documentation for F401: https://docs.astral.sh/ruff/rules/unused-import
+View documentation for F841: https://docs.astral.sh/ruff/rules/unused-variable
+View documentation for E712: https://docs.astral.sh/ruff/rules/comparison-to-true
+View documentation for F811: https://docs.astral.sh/ruff/rules/redefined-while-unused
+View documentation for E402: https://docs.astral.sh/ruff/rules/module-import-not-at-top-of-file
+View documentation for E722: https://docs.astral.sh/ruff/rules/bare-except
+View documentation for B008: https://docs.astral.sh/ruff/rules/function-call-in-default-argument

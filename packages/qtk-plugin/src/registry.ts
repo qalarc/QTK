@@ -25,6 +25,7 @@ import { terraformCompressor } from "./compressors/terraform.ts";
 import { shellcheckCompressor } from "./compressors/shellcheck.ts";
 import { helmCompressor } from "./compressors/helm.ts";
 import { rustcCompressor } from "./compressors/rustc.ts";
+import { ruffCompressor } from "./compressors/ruff.ts";
 import { readToolCompressor } from "./tools/read.ts";
 import { grepToolCompressor } from "./tools/grep.ts";
 import { globToolCompressor } from "./tools/glob.ts";
@@ -57,6 +58,7 @@ export const DEFAULT_COMPRESSORS: readonly Compressor[] = [
   shellcheckCompressor,
   helmCompressor,
   rustcCompressor,
+  ruffCompressor,
 ];
 
 export class CompressorRegistry {
