@@ -1,0 +1,59 @@
+In ./deploy.sh line 3:
+if [ "$ENV" = "prod" ]; then
+^-- SC2086 (info): Double quote to prevent globbing and word splitting.
+
+In ./deploy.sh line 7:
+SERVERS=$(cat servers.txt)
+^-- SC2002 (style): Useless cat. Consider 'cmd < file | ..' or just 'cmd file' instead.
+
+In ./deploy.sh line 12:
+for server in $SERVERS; do
+              ^-- SC2086 (info): Double quote to prevent globbing and word splitting.
+
+In ./deploy.sh line 15:
+ssh $server "deploy $VERSION"
+     ^-- SC2086 (info): Double quote to prevent globbing and word splitting.
+
+In ./deploy.sh line 18:
+if [ $STATUS -eq 0 ]; then
+     ^-- SC2086 (info): Double quote to prevent globbing and word splitting.
+
+In ./deploy.sh line 22:
+echo "Deployed to $server successfully"
+                            ^-- SC2086 (info): Double quote to prevent globbing and word splitting.
+
+In ./scripts/build.sh line 5:
+VERSION=`cat VERSION.txt`
+       ^-- SC2006 (style): Use $() instead of legacy backticks.
+
+In ./scripts/build.sh line 9:
+if [ -f $OUTPUT ]; then
+       ^-- SC2086 (info): Double quote to prevent globbing and word splitting.
+
+In ./scripts/build.sh line 13:
+tar czf $OUTPUT.tar.gz dist/
+       ^-- SC2086 (info): Double quote to prevent globbing and word splitting.
+
+In ./scripts/build.sh line 17:
+find . -name "*.o" -exec rm {} \;
+                           ^-- SC2069 (warning): The -exec does not invoke a shell. Use -exec sh -c ... for that.
+
+In ./scripts/cleanup.sh line 3:
+for f in $(find . -name "*.tmp"); do
+         ^-- SC2044 (warning): For loops over find output are fragile. Use find -exec or a while read loop.
+
+In ./scripts/cleanup.sh line 7:
+rm $f
+   ^-- SC2086 (info): Double quote to prevent globbing and word splitting.
+
+In ./scripts/cleanup.sh line 11:
+if [ "$1" == "--force" ]; then
+          ^-- SC2278 (warning): In sh, == is not defined. Use = instead.
+
+For more information:
+  https://www.shellcheck.net/wiki/SC2086 -- Double quote to prevent globbing ...
+  https://www.shellcheck.net/wiki/SC2002 -- Useless cat. Consider 'cmd < fil ...
+  https://www.shellcheck.net/wiki/SC2006 -- Use $() instead of legacy backt ...
+  https://www.shellcheck.net/wiki/SC2044 -- For loops over find output are  ...
+  https://www.shellcheck.net/wiki/SC2069 -- The -exec does not invoke a shel ...
+  https://www.shellcheck.net/wiki/SC2278 -- In sh, == is not defined. Use = ...
