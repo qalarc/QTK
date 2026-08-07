@@ -4,7 +4,7 @@
 
 ## Unreleased (v0.3.2 in progress)
 
-Twelve new TS compressors added (each with fixtures + tests, all green):
+Fifteen new TS compressors added (each with fixtures + tests, all green):
 
 | Compressor | Category | What it does | Tests |
 | --- | --- | --- | ---: |
@@ -20,9 +20,12 @@ Twelve new TS compressors added (each with fixtures + tests, all green):
 | `ansible` | infra | `ansible-playbook site.yml` — keeps `PLAY [target]` headers + `TASK [role : task]` headers (only when they have changed/failed results) + `changed: [host]` + `fatal: [host]: FAILED!` (with JSON detail) + the full `PLAY RECAP` table + `ERROR!` lines; drops `ok: [host]` lines (the bulk of a successful run), `skipping:`, `META: ran handlers`, non-actionable `[WARNING]` banners | 14 |
 | `terraform` | infra | `terraform plan` / `terraform apply` — keeps resource action markers (`# <res> will be created/destroyed/updated/replaced`) + the `+`/`-`/`~`/`-/+` diff lines + `Plan: N to add, M to change, K to destroy.` summary + `Changes to Outputs` block + `Apply complete!` + `Error:` lines; drops `Refreshing state...` / `data.*: Reading`/`Read complete` refresh noise, provider preamble, symbol legend, decorative borders, plan-file epilogue | 14 |
 | `shellcheck` | linter | `shellcheck *.sh` — keeps `In <file> line N:` location headers + source lines (context) + `^-- SCxxxx (severity): message.` finding lines; drops the `For more information:` wiki URL epilogue (URLs are derivable from SC codes) | 12 |
+| `helm` | infra | `helm install` / `helm upgrade` / `helm rollback` — keeps the release status block (`NAME:`/`LAST DEPLOYED:`/`NAMESPACE:`/`STATUS:`/`REVISION:`) + `NOTES:` section (post-install instructions) + `Error:` lines + `coalesce.go: warning:` template errors + `Warning:` hook-failure lines; drops rendered-manifest noise (`# Source:` comments + YAML body), `Creating`/`Deleting`/`Wiping`/`Building`/`Updating` progress chatter. EXCLUDES `helm template` (rendered YAML is the intended output) | 15 |
+| `rustc` | compiler | direct `rustc foo.rs` (NOT via cargo) — keeps `error[E0xxx]:`/`warning:` diagnostic headers + `--> file.rs:LINE:COL` span locators + source snippets + `^^^` underlines + `note:`/`help:` continuations + `error: aborting due to N previous errors` summary + `#[warn]` lint codes; deduplicates exact-adjacent identical diagnostics; drops version banners + decorative `|` border lines | 15 |
+| `ruff` | linter | `ruff check .` — keeps `file.py:LINE:COL: Exxx message` finding lines + `Found N error(s).` summary + `* Can fix: N` auto-fixable count; drops the `View documentation` URL epilogue (URLs are derivable from rule codes), `*` dividers, watch-mode chatter | 12 |
 
-Test count: **115 → 263** (148 new tests, 0 regressions). Typecheck clean.
-All twelve follow the CONTRIBUTING.md 5-step recipe (file → interface → registry → fixtures → tests).
+Test count: **115 → 305** (190 new tests, 0 regressions). Typecheck clean.
+All fifteen follow the CONTRIBUTING.md 5-step recipe (file → interface → registry → fixtures → tests).
 
 Commits:
 - `bd5b38f` feat: add npm compressor
@@ -37,6 +40,9 @@ Commits:
 - `11ae0ae` feat: add ansible compressor
 - `b8c9cde` feat: add terraform compressor
 - `d659f71` feat: add shellcheck compressor
+- `0a3490b` feat: add helm compressor
+- `e8a3581` feat: add rustc compressor
+- `5ad29cb` feat: add ruff compressor
 
 ## Latest release — v0.3.1 SHIPPED
 
