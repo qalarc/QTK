@@ -4,7 +4,7 @@
 
 ## Unreleased (v0.3.2 in progress)
 
-Twenty-four new TS compressors added (each with fixtures + tests, all green):
+Twenty-seven new TS compressors added (each with fixtures + tests, all green):
 
 | Compressor | Category | What it does | Tests |
 | --- | --- | --- | ---: |
@@ -32,9 +32,12 @@ Twenty-four new TS compressors added (each with fixtures + tests, all green):
 | `prettier` | linter | `prettier --check .` / `prettier -c src/` (check mode only — excludes `--write` which mutates) — keeps `[warn] <file>` + `[error] <file>: <msg>` lines + `Code style issues found in N files.` summary; drops the `Checking formatting...` progress line, `All matched files use Prettier code style!` clean-pass chatter, version banner | 13 |
 | `black` | linter | `black --check .` / `python -m black --check .` (check mode only — excludes bare `black .` which mutates) — keeps `would reformat <file>` + `error: cannot format <file>: <msg>` lines + `N files would be reformatted.` summary; drops the `Oh no! 💥 💔 💥` decoration, `All done! ✨ 🍰 ✨` clean-pass chatter, `N files left unchanged.`, version banner | 14 |
 | `rubocop` | linter | `rubocop` / `bundle exec rubocop` (excludes `--version`/`-a`/`-A`/`--auto-correct`/`--show-cops`) — keeps `file.rb:LINE:COL: SEV: RuleName: message` finding lines (C/R/W/E/F severity) + `N files inspected, M offenses detected` summary; drops the `Inspecting N files` progress line, dotted progress bar, version banner, watch-mode chatter | 13 |
+| `swiftc` | compiler | direct `swiftc` / `swift build` (NOT `xcodebuild`) — keeps `file.swift:LINE:COL: error:/warning:/note:` diagnostic headers + source snippets + `^~~~` caret underlines + `<Unknown>:0:` aggregate markers + `error: fatalError` driver summary; deduplicates adjacent identical diagnostics; drops version banners, `Compiling`/`Linking`/`Building` progress, `Finding`/`Found`/`Considering` toolchain-discovery noise | 14 |
+| `javac` | compiler | direct `javac Main.java` (NOT via gradle/mvn — those have their own compressors) — keeps `file.java:LINE: error:/warning:` diagnostic headers + the `symbol:`/`location:`/`required:`/`found:`/`reason:` detail block + source snippets + `^` carets + `Note:` lines + `N errors`/`N warnings` summary; deduplicates adjacent identical diagnostics; drops `Picked up _JAVA_OPTIONS` JVM noise + version banner | 16 |
+| `golangci-lint` | linter | `golangci-lint run` (distinct from `go vet` which is handled by the go-vet compressor — golangci-lint matches the `golangci-lint` command, go-vet matches `go vet`) — keeps `file.go:LINE:COL: <code>: msg (<linter>)` findings (staticcheck, gosimple, govet, errcheck, ineffassign, unused, gocyclo, gomnd, bodyclose...) + the `(<linter>)` continuation tag + `level=error`/`level=warning` markers + `N issues` summary; drops version banner, `level=info` chatter, `Running [linters]...` progress | 16 |
 
-Test count: **115 → 427** (312 new tests, 0 regressions). Typecheck clean.
-All twenty-four follow the CONTRIBUTING.md 5-step recipe (file → interface → registry → fixtures → tests).
+Test count: **115 → 473** (358 new tests, 0 regressions). Typecheck clean.
+All twenty-seven follow the CONTRIBUTING.md 5-step recipe (file → interface → registry → fixtures → tests).
 
 Commits:
 - `bd5b38f` feat: add npm compressor
@@ -61,6 +64,9 @@ Commits:
 - `eaa4356` feat: add prettier compressor
 - `df52eed` feat: add black compressor
 - `7c8d30e` feat: add rubocop compressor
+- `a775a12` feat: add swiftc compressor
+- `1a807cd` feat: add javac compressor
+- `7b26e45` feat: add golangci-lint compressor
 
 ## Latest release — v0.3.1 SHIPPED
 
