@@ -1,0 +1,38 @@
+rustc 1.78.0 (9b00956e5 2024-04-29)
+error[E0308]: mismatched types
+  --> src/main.rs:13:5
+   |
+13 |     let x: i32 = "hello";
+   |                  ^^^^^^^ expected `i32`, found `&str`
+   |
+help: consider removing the string literal
+   |
+13 -     let x: i32 = "hello";
+13 +     let x: i32 = 42;
+   |
+
+warning: unused variable: `x`
+  --> src/main.rs:4:9
+   |
+4 |     let x = 5;
+   |         ^ help: if this is intentional, prefix with an underscore: `_x`
+   |
+   = note: `#[warn(unused_variables)]` on by default
+
+warning: unused imports: `std::collections::HashMap`
+  --> src/main.rs:2:5
+   |
+2 | use std::collections::HashMap;
+   |     ^^^^^^^^^^^^^^^^^^^^^^^^^
+   |
+   = note: `#[warn(unused_imports)]` on by default
+
+error[E0599]: no method named `nonexistent` found for struct `Foo` in the current scope
+  --> src/main.rs:22:10
+   |
+22 |     foo.nonexistent();
+   |          ^^^^^^^^^^ help: there is a method with a similar name: `existent`
+
+error: aborting due to 2 previous errors
+Some errors have detailed explanations: E0308, E0599.
+For more information about an error, try `rustc --explain E0308`.
