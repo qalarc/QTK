@@ -1,0 +1,117 @@
+# Source: my-app/charts/redis/templates/configmap.yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: my-app-redis-config
+  labels:
+    app.kubernetes.io/name: redis
+data:
+  redis.conf: |
+    maxmemory 256mb
+    maxmemory-policy allkeys-lru
+# Source: my-app/charts/redis/templates/service.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: my-app-redis
+spec:
+  type: ClusterIP
+  ports:
+    - port: 6379
+      targetPort: redis
+# Source: my-app/charts/redis/templates/deployment.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: my-app-redis
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: redis
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: redis
+    spec:
+      containers:
+        - name: redis
+          image: redis:7-alpine
+          ports:
+            - containerPort: 6379
+              name: redis
+# Source: my-app/templates/deployment.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: my-app
+  labels:
+    app.kubernetes.io/name: my-app
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: my-app
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: my-app
+    spec:
+      containers:
+        - name: my-app
+          image: myregistry/my-app:1.2.3
+          ports:
+            - containerPort: 8080
+# Source: my-app/templates/service.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: my-app
+spec:
+  type: ClusterIP
+  ports:
+    - port: 80
+      targetPort: 8080
+# Source: my-app/templates/ingress.yaml
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: my-app
+  annotations:
+    kubernetes.io/ingress.class: nginx
+spec:
+  rules:
+    - host: my-app.example.com
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: my-app
+                port:
+                  number: 80
+
+NAME: my-app
+LAST DEPLOYED: Fri Aug  7 14:32:11 2026
+NAMESPACE: production
+STATUS: deployed
+REVISION: 3
+NOTES:
+1. Get the application URL by running these commands:
+  export POD_NAME=$(kubectl get pods --namespace production -l "app.kubernetes.io/name=my-app,app.kubernetes.io/instance=my-app" -o jsonpath="{.items[0].metadata.name}")
+  export CONTAINER_PORT=$(kubectl get pod --namespace production $POD_NAME -o jsonpath="{.spec.containers[0].ports[0].containerPort}")
+  echo "Visit http://127.0.0.1:8080 to use your application"
+  kubectl --namespace production port-forward $POD_NAME 8080:$CONTAINER_PORT
+
+Creating my-app
+Wiping old release data
+Building dependency tree
+Updating dependencies
+
+Warning: Hook pre-install my-app/templates/hooks/pre-install-job.yaml failed: job.batch "my-app-pre-install" already exists
+
+coalesce.go: warning: destination for annotations is a table. Ignoring non-table value
+coalesce.go: warning: cannot overwrite table with non-table for annotations (map[string]interface {})
+
+Error: Kubernetes cluster unreachable: connection refused
