@@ -10,6 +10,7 @@ import { gitStatusCompressor } from "./compressors/git.ts";
 import { lsCompressor } from "./compressors/ls.ts";
 import { rgCompressor } from "./compressors/rg.ts";
 import { pytestCompressor } from "./compressors/pytest.ts";
+import { pytestVCompressor } from "./compressors/pytest-v.ts";
 import { cargoTestCompressor } from "./compressors/cargo.ts";
 import { npmCompressor } from "./compressors/npm.ts";
 import { goCompressor } from "./compressors/go.ts";
@@ -42,6 +43,8 @@ export const DEFAULT_COMPRESSORS: readonly Compressor[] = [
   gitStatusCompressor,
   lsCompressor,
   rgCompressor,
+  // pytest-v BEFORE pytest (first-match wins; -v/--verbose is more specific).
+  pytestVCompressor,
   pytestCompressor,
   cargoTestCompressor,
   npmCompressor,

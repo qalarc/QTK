@@ -1,0 +1,15 @@
+============================= test session starts ==============================
+platform linux -- Python 3.11.4, pytest-7.4.0, pluggy-1.2.0
+rootdir: /home/user/project
+collected 8 items
+
+tests/test_add.py::test_add PASSED [ 12%]
+tests/test_add.py::test_sub PASSED [ 25%]
+tests/test_mul.py::test_mul PASSED [ 37%]
+tests/test_mul.py::test_div PASSED [ 50%]
+tests/test_str.py::test_concat PASSED [ 62%]
+tests/test_str.py::test_upper PASSED [ 75%]
+tests/test_str.py::test_lower PASSED [ 87%]
+tests/test_str.py::test_split PASSED [100%]
+
+============================== 8 passed in 1.42s ==============================

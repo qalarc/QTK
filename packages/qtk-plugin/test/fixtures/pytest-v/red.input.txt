@@ -1,0 +1,30 @@
+============================= test session starts ==============================
+platform linux -- Python 3.11.4, pytest-7.4.0, pluggy-1.2.0
+rootdir: /home/user/project
+collected 5 items
+
+tests/test_thing.py::test_addition PASSED [ 20%]
+tests/test_thing.py::test_subtraction FAILED [ 40%]
+tests/test_thing.py::test_multiplication PASSED [ 60%]
+tests/test_thing.py::test_division FAILED [ 80%]
+tests/test_thing.py::test_modulo PASSED [100%]
+
+=================================== FAILURES ====================================
+_________________________________ test_subtraction _________________________________
+
+    def test_subtraction():
+>       assert 10 - 5 == 4
+E       assert 5 == 4
+
+tests/test_thing.py:9: AssertionError
+__________________________________ test_division __________________________________
+
+    def test_division():
+>       assert 10 / 0 == 1
+E       ZeroDivisionError: division by zero
+
+tests/test_thing.py:15: ZeroDivisionError
+========================== short test summary info ============================
+FAILED tests/test_thing.py::test_subtraction - assert 5 == 4
+FAILED tests/test_thing.py::test_division - ZeroDivisionError: division by zero
+========================= 2 failed, 3 passed in 0.83s =========================
