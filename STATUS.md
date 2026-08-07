@@ -4,7 +4,7 @@
 
 ## Unreleased (v0.3.2 in progress)
 
-Twenty-one new TS compressors added (each with fixtures + tests, all green):
+Twenty-four new TS compressors added (each with fixtures + tests, all green):
 
 | Compressor | Category | What it does | Tests |
 | --- | --- | --- | ---: |
@@ -29,9 +29,12 @@ Twenty-one new TS compressors added (each with fixtures + tests, all green):
 | `gcc` | compiler | direct `gcc`/`g++`/`clang`/`clang++`/`cc` (NOT via make — make is already covered) — keeps `file.c:LINE:COL: error:/warning:/note:` diagnostic headers + source-snippet lines + `^~~` caret underlines + `N warnings/errors generated.` summary + linker errors (`undefined reference to` / `cannot find -l` / `ld returned 1 exit status`); deduplicates adjacent identical diagnostics; drops version banners, toolchain-discovery noise, compiler/linker invocation echoes | 14 |
 | `go-vet` | linter | `go vet` / `go tool vet` (distinct from the `go` compressor which handles test/build — registered before it, first-match wins) — keeps `file.go:LINE:COL: <checker>: <message>` findings (printf, composites, structtag, lostcancel, shadow, unreachable, ...) + `exit status N`; drops the version banner + `# package/path` section headers (package derivable from file path) | 13 |
 | `pylint` | linter | `pylint src/` / `python -m pylint .` — keeps `file.py:LINE:COL: LNNNN: message (symbolic-name)` finding lines + `************* Module <name>` headers + `Your code has been rated at X/10` rating; drops the version banner, decorative borders, the `Report`/`======`/`N statements analysed.` block, watch-mode chatter | 14 |
+| `prettier` | linter | `prettier --check .` / `prettier -c src/` (check mode only — excludes `--write` which mutates) — keeps `[warn] <file>` + `[error] <file>: <msg>` lines + `Code style issues found in N files.` summary; drops the `Checking formatting...` progress line, `All matched files use Prettier code style!` clean-pass chatter, version banner | 13 |
+| `black` | linter | `black --check .` / `python -m black --check .` (check mode only — excludes bare `black .` which mutates) — keeps `would reformat <file>` + `error: cannot format <file>: <msg>` lines + `N files would be reformatted.` summary; drops the `Oh no! 💥 💔 💥` decoration, `All done! ✨ 🍰 ✨` clean-pass chatter, `N files left unchanged.`, version banner | 14 |
+| `rubocop` | linter | `rubocop` / `bundle exec rubocop` (excludes `--version`/`-a`/`-A`/`--auto-correct`/`--show-cops`) — keeps `file.rb:LINE:COL: SEV: RuleName: message` finding lines (C/R/W/E/F severity) + `N files inspected, M offenses detected` summary; drops the `Inspecting N files` progress line, dotted progress bar, version banner, watch-mode chatter | 13 |
 
-Test count: **115 → 387** (272 new tests, 0 regressions). Typecheck clean.
-All twenty-one follow the CONTRIBUTING.md 5-step recipe (file → interface → registry → fixtures → tests).
+Test count: **115 → 427** (312 new tests, 0 regressions). Typecheck clean.
+All twenty-four follow the CONTRIBUTING.md 5-step recipe (file → interface → registry → fixtures → tests).
 
 Commits:
 - `bd5b38f` feat: add npm compressor
@@ -55,6 +58,9 @@ Commits:
 - `9c5610e` feat: add gcc compressor
 - `70dcc50` feat: add go-vet compressor
 - `7d2ded2` feat: add pylint compressor
+- `eaa4356` feat: add prettier compressor
+- `df52eed` feat: add black compressor
+- `7c8d30e` feat: add rubocop compressor
 
 ## Latest release — v0.3.1 SHIPPED
 
