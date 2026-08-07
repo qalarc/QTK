@@ -4,7 +4,7 @@
 
 ## Unreleased (v0.3.2 in progress)
 
-Fifteen new TS compressors added (each with fixtures + tests, all green):
+Eighteen new TS compressors added (each with fixtures + tests, all green):
 
 | Compressor | Category | What it does | Tests |
 | --- | --- | --- | ---: |
@@ -23,9 +23,12 @@ Fifteen new TS compressors added (each with fixtures + tests, all green):
 | `helm` | infra | `helm install` / `helm upgrade` / `helm rollback` — keeps the release status block (`NAME:`/`LAST DEPLOYED:`/`NAMESPACE:`/`STATUS:`/`REVISION:`) + `NOTES:` section (post-install instructions) + `Error:` lines + `coalesce.go: warning:` template errors + `Warning:` hook-failure lines; drops rendered-manifest noise (`# Source:` comments + YAML body), `Creating`/`Deleting`/`Wiping`/`Building`/`Updating` progress chatter. EXCLUDES `helm template` (rendered YAML is the intended output) | 15 |
 | `rustc` | compiler | direct `rustc foo.rs` (NOT via cargo) — keeps `error[E0xxx]:`/`warning:` diagnostic headers + `--> file.rs:LINE:COL` span locators + source snippets + `^^^` underlines + `note:`/`help:` continuations + `error: aborting due to N previous errors` summary + `#[warn]` lint codes; deduplicates exact-adjacent identical diagnostics; drops version banners + decorative `|` border lines | 15 |
 | `ruff` | linter | `ruff check .` — keeps `file.py:LINE:COL: Exxx message` finding lines + `Found N error(s).` summary + `* Can fix: N` auto-fixable count; drops the `View documentation` URL epilogue (URLs are derivable from rule codes), `*` dividers, watch-mode chatter | 12 |
+| `pytest-v` | test-runner | `pytest -v` / `--verbose` (NOT default pytest — registered before the generic pytest compressor, first-match wins) — keeps `FAILED` lines + tracebacks + collection errors + the `=== N failed, M passed ===` summary; drops `PASSED` lines (the bulk of a green verbose run — the summary count is enough), `SKIPPED` lines, session header, progress markers | 12 |
+| `eslint` | linter | `eslint .` / `npx eslint src/` — keeps file headers + `LINE:COL severity message rule` finding lines + `✖ N problems` summary + fixable hint; drops the version banner, `` decorative borders, `View documentation` URLs (derivable from rule codes), watch-mode chatter | 14 |
+| `mypy` | linter | `mypy .` / `python -m mypy .` — keeps `file.py:LINE: error: msg [code]` finding lines + `note:` continuations + `Found N errors` summary + `Success: no issues found` clean-pass indicator; drops the version banner, decorative borders, repetitive `Use --...` hint lines | 14 |
 
-Test count: **115 → 305** (190 new tests, 0 regressions). Typecheck clean.
-All fifteen follow the CONTRIBUTING.md 5-step recipe (file → interface → registry → fixtures → tests).
+Test count: **115 → 345** (230 new tests, 0 regressions). Typecheck clean.
+All eighteen follow the CONTRIBUTING.md 5-step recipe (file → interface → registry → fixtures → tests).
 
 Commits:
 - `bd5b38f` feat: add npm compressor
@@ -43,6 +46,9 @@ Commits:
 - `0a3490b` feat: add helm compressor
 - `e8a3581` feat: add rustc compressor
 - `5ad29cb` feat: add ruff compressor
+- `14d6bfb` feat: add pytest-v compressor (verbose mode)
+- `69554ab` feat: add eslint compressor
+- `302620b` feat: add mypy compressor
 
 ## Latest release — v0.3.1 SHIPPED
 
