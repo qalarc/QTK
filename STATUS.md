@@ -4,12 +4,12 @@
 
 ## Unreleased (v0.3.2 in progress)
 
-Eighteen new TS compressors added (each with fixtures + tests, all green):
+Twenty-one new TS compressors added (each with fixtures + tests, all green):
 
 | Compressor | Category | What it does | Tests |
 | --- | --- | --- | ---: |
 | `npm` | package-manager | `npm install` / `pnpm install` / `yarn install` — keeps summary line, deprecations, errors, audit; drops progress bars + dependency tree | 11 |
-| `go` | test-runner | `go test` / `go build` / `go vet` — keeps `ok`/`FAIL` summary + `--- FAIL` lines + build errors; drops `=== RUN`/`--- PASS` per-test noise | 10 |
+| `go` | test-runner | `go test` / `go build` — keeps `ok`/`FAIL` summary + `--- FAIL` lines + build errors; drops `=== RUN`/`--- PASS` per-test noise (`go vet` is handled by the dedicated `go-vet` compressor) | 11 |
 | `kubectl` | infra | `kubectl get <resource>` table output — keeps header + healthy/anomaly summary; surfaces Pending/CrashLoopBackOff/ImagePullBackOff/OOMKilled rows, drops healthy `Running` rows | 11 |
 | `docker` | infra | `docker ps -a` / `docker build` / `docker compose up` — ps: keeps header + summary + anomalous rows (Exited/Restarting/unhealthy), drops healthy `Up` rows; build: keeps `Successfully built`/`tagged` + errors, drops `Step N/N` + hash noise; compose: keeps service state changes + errors + exit codes, drops pull noise + log spam | 13 |
 | `make` | build-tool | `make` / `make build` / `make install` — keeps compiler/linker diagnostics (`file.c:LINE:COL: error:`) + source-snippet context + `make: ***` errors + linker errors; drops command echoes (`cc -c ...`) | 11 |
@@ -26,9 +26,12 @@ Eighteen new TS compressors added (each with fixtures + tests, all green):
 | `pytest-v` | test-runner | `pytest -v` / `--verbose` (NOT default pytest — registered before the generic pytest compressor, first-match wins) — keeps `FAILED` lines + tracebacks + collection errors + the `=== N failed, M passed ===` summary; drops `PASSED` lines (the bulk of a green verbose run — the summary count is enough), `SKIPPED` lines, session header, progress markers | 12 |
 | `eslint` | linter | `eslint .` / `npx eslint src/` — keeps file headers + `LINE:COL severity message rule` finding lines + `✖ N problems` summary + fixable hint; drops the version banner, `` decorative borders, `View documentation` URLs (derivable from rule codes), watch-mode chatter | 14 |
 | `mypy` | linter | `mypy .` / `python -m mypy .` — keeps `file.py:LINE: error: msg [code]` finding lines + `note:` continuations + `Found N errors` summary + `Success: no issues found` clean-pass indicator; drops the version banner, decorative borders, repetitive `Use --...` hint lines | 14 |
+| `gcc` | compiler | direct `gcc`/`g++`/`clang`/`clang++`/`cc` (NOT via make — make is already covered) — keeps `file.c:LINE:COL: error:/warning:/note:` diagnostic headers + source-snippet lines + `^~~` caret underlines + `N warnings/errors generated.` summary + linker errors (`undefined reference to` / `cannot find -l` / `ld returned 1 exit status`); deduplicates adjacent identical diagnostics; drops version banners, toolchain-discovery noise, compiler/linker invocation echoes | 14 |
+| `go-vet` | linter | `go vet` / `go tool vet` (distinct from the `go` compressor which handles test/build — registered before it, first-match wins) — keeps `file.go:LINE:COL: <checker>: <message>` findings (printf, composites, structtag, lostcancel, shadow, unreachable, ...) + `exit status N`; drops the version banner + `# package/path` section headers (package derivable from file path) | 13 |
+| `pylint` | linter | `pylint src/` / `python -m pylint .` — keeps `file.py:LINE:COL: LNNNN: message (symbolic-name)` finding lines + `************* Module <name>` headers + `Your code has been rated at X/10` rating; drops the version banner, decorative borders, the `Report`/`======`/`N statements analysed.` block, watch-mode chatter | 14 |
 
-Test count: **115 → 345** (230 new tests, 0 regressions). Typecheck clean.
-All eighteen follow the CONTRIBUTING.md 5-step recipe (file → interface → registry → fixtures → tests).
+Test count: **115 → 387** (272 new tests, 0 regressions). Typecheck clean.
+All twenty-one follow the CONTRIBUTING.md 5-step recipe (file → interface → registry → fixtures → tests).
 
 Commits:
 - `bd5b38f` feat: add npm compressor
@@ -49,6 +52,9 @@ Commits:
 - `14d6bfb` feat: add pytest-v compressor (verbose mode)
 - `69554ab` feat: add eslint compressor
 - `302620b` feat: add mypy compressor
+- `9c5610e` feat: add gcc compressor
+- `70dcc50` feat: add go-vet compressor
+- `7d2ded2` feat: add pylint compressor
 
 ## Latest release — v0.3.1 SHIPPED
 
