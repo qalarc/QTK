@@ -1,0 +1,29 @@
+golangci-lint has version 1.59.1 built with go1.22.5 from 4a4ab94
+level=info msg="[config] golangci-lint config file found: .golangci.yml"
+level=info msg="[lintersdb] Active 10 linters and 0 linters configurations"
+level=info msg="[runner] worker 1 allocated (1 workers)"
+level=info msg="[runner] worker 2 allocated (2 workers)"
+level=info msg="[runner] worker 3 allocated (3 workers)"
+level=info msg="[runner] worker 4 allocated (4 workers)"
+level=info msg="[lintersdb] Active 10 linters and 0 linters configurations"
+Running [staticcheck gosimple govet errcheck ineffassign unused revive gocyclo gomnd bodyclose] ...
+main.go:15:6: S1000: should use a simple channel iteration
+(staticcheck)
+main.go:23:2: G104: Errors unhandled. (errcheck)
+main.go:31:10: S1024: should replace time.Now().Sub(t) with time.Since(t)
+(staticcheck)
+main.go:42:5: ineffectual assignment to err (ineffassign)
+handler.go:10:18: Error return value of `w.Write` is not checked (errcheck)
+handler.go:25:6: func `process` has too many statements (35 > 30)
+(gocyclo)
+handler.go:40:11: G601: Implicit memory aliasing in for loop.
+(govet)
+service.go:12:2: `config` is unused (unused)
+service.go:18:6: should replace magic number 86400 with constant (gomnd)
+service.go:30:14: response body must be closed (bodyclose)
+
+level=warning msg="[linters] this linter is deprecated: scopelint (deprecated, replaced by exportloopref)"
+level=error msg="[runner] Panic: test panic on input: stack trace goroutine 1 [running]:"
+
+8 issues:
+(8 errors, 0 warnings)

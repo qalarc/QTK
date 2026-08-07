@@ -37,6 +37,7 @@ import { blackCompressor } from "./compressors/black.ts";
 import { rubocopCompressor } from "./compressors/rubocop.ts";
 import { swiftcCompressor } from "./compressors/swiftc.ts";
 import { javacCompressor } from "./compressors/javac.ts";
+import { golangciLintCompressor } from "./compressors/golangci-lint.ts";
 import { readToolCompressor } from "./tools/read.ts";
 import { grepToolCompressor } from "./tools/grep.ts";
 import { globToolCompressor } from "./tools/glob.ts";
@@ -84,6 +85,7 @@ export const DEFAULT_COMPRESSORS: readonly Compressor[] = [
   rubocopCompressor,
   swiftcCompressor,
   javacCompressor,
+  golangciLintCompressor,
 ];
 
 export class CompressorRegistry {
