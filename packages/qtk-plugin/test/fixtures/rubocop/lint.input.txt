@@ -1,0 +1,26 @@
+Inspecting 247 files
+.............................................................................................................................................................
+.............................................................................................................................................................
+.........................................
+
+app/models/user.rb:10:5: C: Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+app/models/user.rb:15:1: C: Layout/IndentationWidth: Use 2 (not 4) spaces for indentation.
+app/models/user.rb:22:7: W: Rails/OutputSafety: Passing user-controlled data to raw() may lead to XSS.
+app/models/user.rb:30:1: C: Style/Documentation: Missing top-level class documentation comment for class User.
+app/models/user.rb:45:5: R: Metrics/MethodLength: Method has too many lines. [15/10]
+app/models/post.rb:8:1: C: Style/Documentation: Missing top-level class documentation comment for class Post.
+app/models/post.rb:20:3: W: Lint/UselessAssignment: Useless assignment to variable - local_var.
+app/controllers/users_controller.rb:5:1: C: Style/ClassAndModuleChildren: Use nested module/class definitions instead of compact style.
+app/controllers/users_controller.rb:12:7: C: Style/GuardClause: Use a guard clause instead of wrapping the code in a conditional expression.
+app/controllers/users_controller.rb:25:5: R: Rails/Blank: Use blank? instead of nil? || empty?.
+app/controllers/posts_controller.rb:10:1: C: Style/Documentation: Missing top-level class documentation comment.
+app/controllers/posts_controller.rb:18:25: C: Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation.
+app/helpers/application_helper.rb:3:1: C: Style/Documentation: Missing top-level module documentation comment for module ApplicationHelper.
+app/helpers/application_helper.rb:12:5: W: Rails/OutputSafety: Avoid using raw unless the input is trusted.
+app/jobs/cleanup_job.rb:5:3: C: Style/SymbolArray: Use %i or %w for an array of symbols.
+lib/tasks/db.rake:12:5: E: Lint/Syntax: unexpected token tCOMMA
+lib/tasks/db.rake:15:1: C: Style/HashSyntax: Use the new Ruby 1.9 hash syntax.
+config/initializers/secret.rb:5:1: F: Lint/UselessAssignment: Useless assignment to variable - secret_key.
+
+247 files inspected, 47 offenses detected
+247 files inspected, 47 offenses detected, 23 offenses auto-correctable
