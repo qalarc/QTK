@@ -1,0 +1,33 @@
+Swift version 5.10.1 (swift-5.10.1-RELEASE)
+Target: x86_64-unknown-linux-gnu
+swift-driver version: 1.90.11.1 Apple Swift version 5.10.1 (swiftlang-5.10.0.13.10 clang-1500.3.9.4)
+Building main.swift
+Compiling main.swift
+Finding /usr/lib/swift/linux
+Found /usr/lib/swift/linux
+Considering /usr/lib/swift/linux
+main.swift:5:7: warning: variable 'count' was never used; consider replacing with '_' or removing it
+let count = 0
+    ^~~~~
+main.swift:8:12: warning: comparison of integers of different signs: 'Int' and 'UInt' requires an explicit conversion
+if i < buf.count {
+       ^ ~~~~~~~~~
+main.swift:10:14: error: use of unresolved identifier 'missingVar'
+return missingVar
+       ^~~~~~~~~~
+main.swift:15:3: error: cannot convert value of type 'String' to expected argument type 'Int'
+process("hello")
+^       ~~~~~~~
+main.swift:3:1: note: 'process' declared here
+func process(_ x: Int) { }
+^
+main.swift:20:5: error: expected ',' separator
+let result = compute(a b)
+                          ^
+                          ,
+main.swift:22:7: warning: initialization of variable 'tmp' was never used; consider replacing with '_' or removing it
+let tmp = 42
+      ^~~
+<Unknown>:0: error: build had 1 command failure
+error: fatalError
+Linking main

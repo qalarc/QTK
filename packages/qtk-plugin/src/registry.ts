@@ -35,6 +35,7 @@ import { pylintCompressor } from "./compressors/pylint.ts";
 import { prettierCompressor } from "./compressors/prettier.ts";
 import { blackCompressor } from "./compressors/black.ts";
 import { rubocopCompressor } from "./compressors/rubocop.ts";
+import { swiftcCompressor } from "./compressors/swiftc.ts";
 import { readToolCompressor } from "./tools/read.ts";
 import { grepToolCompressor } from "./tools/grep.ts";
 import { globToolCompressor } from "./tools/glob.ts";
@@ -80,6 +81,7 @@ export const DEFAULT_COMPRESSORS: readonly Compressor[] = [
   prettierCompressor,
   blackCompressor,
   rubocopCompressor,
+  swiftcCompressor,
 ];
 
 export class CompressorRegistry {

@@ -19,5 +19,14 @@ coverage/
 # Local dev
 .opencode/qtk-tee/
 .opencode/qtk-stats.sqlite
+.opencode/qtk-stats.sqlite-shm
+.opencode/qtk-stats.sqlite-wal
 .opencode/qtk-cache.sqlite
+.opencode/qtk-cache.sqlite-shm
+.opencode/qtk-cache.sqlite-wal
 .opencode/qtk-rewrites.log
+
+# Editor swap/backup files
+*.swp
+*.swo
+*~
