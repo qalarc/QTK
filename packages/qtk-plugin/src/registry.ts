@@ -27,6 +27,7 @@ import { shellcheckCompressor } from "./compressors/shellcheck.ts";
 import { helmCompressor } from "./compressors/helm.ts";
 import { rustcCompressor } from "./compressors/rustc.ts";
 import { ruffCompressor } from "./compressors/ruff.ts";
+import { eslintCompressor } from "./compressors/eslint.ts";
 import { readToolCompressor } from "./tools/read.ts";
 import { grepToolCompressor } from "./tools/grep.ts";
 import { globToolCompressor } from "./tools/glob.ts";
@@ -62,6 +63,7 @@ export const DEFAULT_COMPRESSORS: readonly Compressor[] = [
   helmCompressor,
   rustcCompressor,
   ruffCompressor,
+  eslintCompressor,
 ];
 
 export class CompressorRegistry {

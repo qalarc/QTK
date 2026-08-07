@@ -1,0 +1,38 @@
+
+Oops! Something went wrong! :(
+
+ESLint: 9.1.0
+
+ESLint encountered a parsing error in the following file:
+
+src/app.js
+   10:5   error    'x' is not defined                no-undef
+   15:1   error    Unexpected console statement      no-console
+   23:3   error   Expected a function expression     prefer-arrow-callback
+   42:80  warning  Line exceeds maximum length of 80  max-len
+   55:7   warning  'unused' is assigned a value but never used  no-unused-vars
+
+src/utils.js
+    8:3   error    Expected ';' and instead saw '}'   semi
+   12:1   error   Unexpected var, use let or const   no-var
+   20:10  warning  Empty block statement              no-empty
+
+src/components/Header.jsx
+   15:5  error  React Hook useEffect has a missing dependency  react-hooks/exhaustive-deps
+   30:1  error  Element type is invalid           react/display-name
+
+src/index.ts
+    5:1   error  Type 'string' is not assignable to type 'number'  @typescript-eslint/no-unsafe-assignment
+   12:7   error  Require statement not part of import statement   @typescript-eslint/no-require-imports
+
+✖ 11 problems (8 errors, 3 warnings)
+  8 errors and 0 warnings potentially fixable with the `eslint --fix`.
+
+View documentation for rule: https://eslint.org/docs/latest/rules/no-undef
+View documentation for rule: https://eslint.org/docs/latest/rules/no-console
+View documentation for rule: https://eslint.org/docs/latest/rules/prefer-arrow-callback
+View documentation for rule: https://eslint.org/docs/latest/rules/max-len
+View documentation for rule: https://eslint.org/docs/latest/rules/no-unused-vars
+View documentation for rule: https://eslint.org/docs/latest/rules/semi
+View documentation for rule: https://eslint.org/docs/latest/rules/no-var
+View documentation for rule: https://eslint.org/docs/latest/rules/no-empty
