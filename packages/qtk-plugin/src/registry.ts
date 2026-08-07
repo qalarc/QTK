@@ -26,6 +26,7 @@ import { terraformCompressor } from "./compressors/terraform.ts";
 import { shellcheckCompressor } from "./compressors/shellcheck.ts";
 import { helmCompressor } from "./compressors/helm.ts";
 import { rustcCompressor } from "./compressors/rustc.ts";
+import { gccCompressor } from "./compressors/gcc.ts";
 import { ruffCompressor } from "./compressors/ruff.ts";
 import { eslintCompressor } from "./compressors/eslint.ts";
 import { mypyCompressor } from "./compressors/mypy.ts";
@@ -63,6 +64,7 @@ export const DEFAULT_COMPRESSORS: readonly Compressor[] = [
   shellcheckCompressor,
   helmCompressor,
   rustcCompressor,
+  gccCompressor,
   ruffCompressor,
   eslintCompressor,
   mypyCompressor,

@@ -1,0 +1,37 @@
+clang version 18.1.8
+Target: x86_64-pc-linux-gnu
+Thread model: posix
+InstalledDir: /usr/bin
+Found candidate GCC installation: /usr/bin/../lib/gcc/x86_64-pc-linux-gnu/14.2.1
+Selected GCC installation: /usr/bin/../lib/gcc/x86_64-pc-linux-gnu/14.2.1
+Candidate multilib: .;@m64
+Selected multilib: .;@m64
+ "/usr/bin/clang-18" -cc1 -triple x86_64-pc-linux-gnu -emit-obj -mrelax-all -dumpdir main.o -dumpname main -mtune=generic -march=x86-64 -O0 -Wall -Wextra -fcolor-diagnostics -main-file-name main.c -target-cpu x86-64 -target-feature +cx16 -dwarf-column-info -debugger-tuning=gdb -resource-dir /usr/lib/clang/18 -internal-isystem /usr/lib/clang/18/include -internal-isystem /usr/bin/../lib/gcc/x86_64-pc-linux-gnu/14.2.1/../../../../include/c++/14.2.1 -internal-isystem /usr/bin/../lib/gcc/x86_64-pc-linux-gnu/14.2.1/../../../../include/c++/14.2.1/x86_64-pc-linux-gnu -internal-externc-isystem /usr/include -fdebug-compilation-dir=/home/user/proj -ferror-limit 19 -fgnuc-version=4.2.1 -fcolor-diagnostics -faddrsig -D__GCC_HAVE_DWARF2_CFI_ASM=1 -o main.o -x c main.c
+main.c:5:7: warning: unused variable 'count' [-Wunused-variable]
+    5 |   int count = 0;
+    |       ^~~~~
+main.c:8:12: warning: comparison of integers of different signs: 'int' and 'unsigned long' [-Wsign-compare]
+    8 |   if (i < sizeof(buf))
+    |       ~ ^ ~~~~~~~~~~~
+main.c:12:10: error: use of undeclared identifier 'missing_var'
+   12 |   return missing_var;
+    |          ^
+main.c:15:3: error: conflicting types for 'process'
+   15 |   process(value);
+    |   ^
+main.c:3:6: note: previous declaration is here
+    3 | void process(double x);
+    |      ^~~~~~~~~~~~~~~~~~
+main.c:20:5: error: expected ';'
+   20 |   int result = compute(a, b)
+    |                         ^
+main.c:22:7: warning: variable 'tmp' set but not used [-Wunused-but-set-variable]
+   22 |   int tmp = 42;
+    |       ^
+2 warnings and 3 errors generated.
+ "/usr/bin/ld" -pie --hash-style=gnu --build-id --eh-frame-hdr -m elf_x86_64 -dynamic-linker /lib64/ld-linux-x86-64.so.2 -o main /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/../../../../lib/Scrt1.o /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/crtbeginS.o -L/usr/lib -L/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1 main.o -lgcc --as-needed -lgcc_s --no-as-needed -lc -lgcc --as-needed -lgcc_s --no-as-needed /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/crtendS.o /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/../../../../lib/crtn.o
+/usr/bin/ld: main.o: in function `main':
+main.c:(.text+0x3a): undefined reference to `compute'
+/usr/bin/ld: main.c:(.text+0x4f): undefined reference to `helper_function'
+/usr/bin/ld: cannot find -lcustomlib: No such file or directory
+collect2: error: ld returned 1 exit status
