@@ -1,7 +1,7 @@
 # QTK vs RTK — A Detailed Comparison
 
 > **Read this first:** [RTK](https://github.com/rtk-ai/rtk) is the mature,
-> production-grade project. 54k+ GitHub stars, 185 releases, supports 13
+> production-grade project. 80k+ GitHub stars, 340+ releases, supports 14
 > AI coding tools across Linux/macOS/Windows, ships a 100+ command filter
 > corpus. It is the project that proved deterministic token compression
 > works at scale. Built by Patrick Szymkowiak, Florian Bruniaux, Adrien
@@ -10,7 +10,7 @@
 > **If you're not running opencode specifically, you almost certainly want
 > RTK, not QTK.** RTK supports Claude Code, Cursor, Gemini CLI, GitHub
 > Copilot, Codex, Windsurf, Cline, Roo Code, OpenCode, OpenClaw, Hermes,
-> Kilo Code, Antigravity — basically every serious AI coding agent.
+> Kilo Code, Trae, Antigravity — basically every serious AI coding agent.
 >
 > QTK is a much narrower project. It asks one question: *if we built this
 > specifically for the opencode plugin surface, what would change?* The

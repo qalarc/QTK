@@ -4,17 +4,22 @@
 
 **Deterministic token compression for opencode-based AI coding agents.**
 
+**Built by [Qalarc](https://qalarc.com)** — the Sydney AI systems studio
+([GitHub org @qalarc](https://github.com/qalarc)). QTK is a Qalarc project:
+conceived, built and maintained by Qalarc. It is **not** affiliated with the
+RTK project (which is a separate, independent team — see below).
+
 > ## Read this first
 >
 > [**RTK (Rust Token Killer)**](https://github.com/rtk-ai/rtk) is the
 > mature, production-grade project for deterministic token compression.
-> 54k+ GitHub stars, 185 releases, supports 13 AI coding tools across
+> 80k+ GitHub stars, 340+ releases, supports 14 AI coding tools across
 > Linux/macOS/Windows, ships a 100+ command filter corpus. Built by
 > Patrick Szymkowiak, Florian Bruniaux, Adrien Eppling and the RTK
 > community. Licensed Apache-2.0.
 >
 > **If you're using Claude Code, Cursor, Gemini CLI, GitHub Copilot,
-> Codex, Windsurf, Cline, Roo Code, OpenClaw, Hermes, Kilo Code, or
+> Codex, Windsurf, Cline, Roo Code, OpenClaw, Hermes, Kilo Code, Trae, or
 > Google Antigravity — use [RTK](https://rtk-ai.app).**
 >
 > **QTK is a narrow opencode-specific spiritual sibling.** It exists
@@ -25,7 +30,9 @@
 > opencode. The whole project is downstream of RTK — RTK proved the
 > thesis, ships the canonical filter corpus, and is broader and more
 > battle-tested. See [`docs/RTK-COMPARISON.md`](docs/RTK-COMPARISON.md)
-> for the architectural diff.
+> for the architectural diff, and
+> [Recent RTK changes](#rtk-upstream--recent-changes-reviewed-2026-09-20)
+> for the current upstream state.
 
 QTK is an [opencode](https://github.com/sst/opencode) plugin that silently
 compresses tool outputs (`git status`, `ls -la`, `rg`, `pytest`, `cargo test`,
@@ -33,6 +40,33 @@ compresses tool outputs (`git status`, `ls -la`, `rg`, `pytest`, `cargo test`,
 **before they reach the model's context window**. No LLM. No prompt
 injection. ~99% reduction on the worst offenders, sub-millisecond p99
 latency, zero changes to how you use opencode.
+
+## RTK upstream — recent changes (reviewed 2026-09-20)
+
+We track upstream RTK because QTK is downstream of it (TOML DSL compatibility,
+bulk-imported filter corpus). Current upstream state as of 20 Sep 2026:
+
+- **v0.49.0 is the latest stable release** (published 2026-09-11). The 0.50.0
+  line is in an intense RC cycle — **rc.444** within the week; near-daily
+  release candidates are normal cadence for this project.
+- **Trae hook integration merged** (PR #3008, 2026-09-18) — RTK now hooks the
+  Trae editor agent, taking supported tools to 14, with same-day follow-ups
+  for Trae portability, partial-install diagnostics and registration
+  identification (plus a Unix-scoped test assertion as reviewed).
+- **Windows robustness** — MSYS child-argument quoting fixes (PR #3728) so
+  arguments reach MSYS children intact.
+- **Third-party benchmarks now exist** — independent measurements (e.g.
+  quesma.com, 2026-09-11) report that realized savings vary by model and
+  workload, on some falling well below the headline "60–90%" range. That
+  matches our experience, which is why QTK's standing policy is to publish
+  **only per-tool measured numbers from real sessions** (see the 17-day,
+  18-project measurement on the project page).
+
+None of these change QTK's architecture: RTK remains an external Rust CLI
+proxy over shell hooks; QTK remains the in-process opencode plugin that also
+compresses `Read`/`Grep`/`Glob`/MCP. As RTK's filter corpus grows,
+`scripts/import-rtk-filters.ts` pulls new filters into QTK with
+Apache-2.0 attribution.
 
 <!-- TODO: insert a screenshot of the qtk gain output once we have a real session -->
 
@@ -498,4 +532,7 @@ Built on:
 - [Bun](https://bun.sh) — TS runtime
 - [quick-xml](https://crates.io/crates/quick-xml), [serde](https://serde.rs), [regex](https://crates.io/crates/regex) — Rust deps
 
-Authored by [fivelidz](https://qalarc.com).
+Authored and maintained by **[Qalarc](https://qalarc.com)** — Sydney,
+Australia · GitHub org [@qalarc](https://github.com/qalarc) · published to
+npm as [@qalarc/qtk-plugin](https://www.npmjs.com/package/@qalarc/qtk-plugin).
+QTK — the Qalarc Token Killer — is a Qalarc project.
