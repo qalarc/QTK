@@ -78,7 +78,7 @@ pub fn compress(input: &str) -> String {
                     &mut failure_buf,
                 );
                 handle_close(
-                    e.name().as_ref(),
+                    e.name().into_inner().as_bytes(),
                     &mut suites,
                     &mut cur_suite,
                     &mut cur_case,
@@ -88,7 +88,7 @@ pub fn compress(input: &str) -> String {
             }
             Ok(Event::End(e)) => {
                 handle_close(
-                    e.name().as_ref(),
+                    e.name().into_inner().as_bytes(),
                     &mut suites,
                     &mut cur_suite,
                     &mut cur_case,
@@ -97,13 +97,12 @@ pub fn compress(input: &str) -> String {
                 );
             }
             Ok(Event::Text(t)) if in_failure => {
-                if let Ok(s) = t.unescape() {
-                    if failure_buf.is_empty() {
-                        failure_buf = s.into_owned();
-                    } else {
-                        failure_buf.push('\n');
-                        failure_buf.push_str(&s);
-                    }
+                let s = t.xml_content(quick_xml::XmlVersion::Explicit1_1);
+                if failure_buf.is_empty() {
+                    failure_buf = s.into_owned();
+                } else {
+                    failure_buf.push('\n');
+                    failure_buf.push_str(&s);
                 }
             }
             Ok(Event::Eof) => break,
@@ -185,11 +184,11 @@ fn handle_open(
     in_failure: &mut bool,
     failure_buf: &mut String,
 ) {
-    match e.name().as_ref() {
+    match e.name().into_inner().as_bytes() {
         b"testsuite" => {
             let mut s = Suite::default();
             for attr in e.attributes().flatten() {
-                match attr.key.as_ref() {
+                match attr.key.into_inner().as_bytes() {
                     b"name" => s.name = attr_str(&attr.value),
                     b"tests" => s.tests = attr_num(&attr.value),
                     b"failures" => s.failures = attr_num(&attr.value),
@@ -204,7 +203,7 @@ fn handle_open(
         b"testcase" => {
             let mut c = Case::default();
             for attr in e.attributes().flatten() {
-                match attr.key.as_ref() {
+                match attr.key.into_inner().as_bytes() {
                     b"name" => c.name = attr_str(&attr.value),
                     b"classname" => c.classname = attr_str(&attr.value),
                     _ => {}
@@ -216,7 +215,7 @@ fn handle_open(
             *in_failure = true;
             failure_buf.clear();
             for attr in e.attributes().flatten() {
-                if attr.key.as_ref() == b"message" {
+                if attr.key.as_ref() == "message" {
                     *failure_buf = attr_str(&attr.value);
                     break;
                 }
@@ -276,15 +275,12 @@ struct Case {
     failure: String,
 }
 
-fn attr_str(bytes: &[u8]) -> String {
-    String::from_utf8_lossy(bytes).into_owned()
+fn attr_str(value: &str) -> String {
+    value.to_string()
 }
 
-fn attr_num(bytes: &[u8]) -> u32 {
-    std::str::from_utf8(bytes)
-        .ok()
-        .and_then(|s| s.parse().ok())
-        .unwrap_or(0)
+fn attr_num(value: &str) -> u32 {
+    value.parse().unwrap_or(0)
 }
 
 /// Pick the first non-blank, non-trace-noise line from a failure body.
